@@ -1,0 +1,1628 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      O DNA dos Espaços — Mentoria Apometria de Ambientes | Flávio Rodrigues
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --teal-deep: #0b3d3f;
+        --teal: #135c5f;
+        --teal-mid: #1f7a80;
+        --aqua: #4fb8ae;
+        --aqua-soft: #cfe9e4;
+        --aqua-wash: #f1f8f6;
+        --gold: #b8912e;
+        --gold-bright: #d4af37;
+        --gold-soft: rgba(184, 145, 46, 0.14);
+        --violet: #8b7cc4;
+        --violet-soft: rgba(139, 124, 196, 0.12);
+        --cream: #faf8f4;
+        --ink: #0e2b2c;
+        --ink-soft: rgb(14, 43, 44);
+        --ink-faint: rgb(14, 43, 44);
+        --line: rgba(14, 43, 44, 0.1);
+        --white: #ffffff;
+
+        --ff-display: "Playfair Display", serif;
+        --ff-body: "Jost", sans-serif;
+
+        --radius: 2px;
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--ff-body);
+        background: var(--cream);
+        color: var(--ink);
+        line-height: 1.7;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        width: min(92%, 1080px);
+        margin-inline: auto;
+      }
+      .container-narrow {
+        width: min(92%, 720px);
+        margin-inline: auto;
+      }
+      .container img {
+        width: 200px;
+        height: 200px;
+      }
+      section {
+        padding-block: clamp(64px, 9vw, 128px);
+        position: relative;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--ff-display);
+        font-weight: 500;
+        line-height: 1.18;
+        color: var(--teal-deep);
+      }
+      h2 {
+        font-size: clamp(1.9rem, 4vw, 2.9rem);
+      }
+      h3 {
+        font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+      }
+      p {
+        color: var(--ink-soft);
+        font-weight: 300;
+      }
+      em {
+        font-style: italic;
+        color: var(--gold);
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: center;
+        font-family: var(--ff-body);
+        font-size: 0.72rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+      .eyebrow::before,
+      .eyebrow::after {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.6;
+      }
+      .eyebrow.left {
+        justify-content: flex-start;
+      }
+      .eyebrow.left::before {
+        display: none;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      /* reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.8s var(--ease),
+          transform 0.8s var(--ease);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* ============================================================
+       CTA BUTTONS
+    ============================================================ */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 38px;
+        font-family: var(--ff-body);
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all 0.35s var(--ease);
+        border: 1px solid transparent;
+      }
+      .btn-primary {
+        background: linear-gradient(120deg, var(--gold-bright), var(--gold));
+        color: var(--white);
+        box-shadow: 0 10px 28px rgba(184, 145, 46, 0.28);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 36px rgba(184, 145, 46, 0.38);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--teal-deep);
+        border-color: var(--teal-deep);
+      }
+      .btn-outline:hover {
+        background: var(--teal-deep);
+        color: var(--white);
+      }
+
+      /* ============================================================
+       HERO
+    ============================================================ */
+      #hero {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding-top: 120px;
+        background:
+          radial-gradient(
+            ellipse 60% 30% at 50% 0%,
+            var(--aqua-wash) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 50% 40% at 85% 90%,
+            var(--violet-soft) 0%,
+            transparent 60%
+          ),
+          var(--white);
+      }
+      .hero-badge {
+        font-family: var(--ff-body);
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--teal-mid);
+        border: 1px solid var(--aqua-soft);
+        background: var(--white);
+        padding: 8px 20px;
+        border-radius: 40px;
+        margin-bottom: 36px;
+      }
+      #hero h1 {
+        max-width: auto;
+        font-size: clamp(2.3rem, 5.4vw, 4.1rem);
+        margin-bottom: 22px;
+      }
+      #hero h1 .veil {
+        display: block;
+        font-family: var(--ff-display);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 0.44em;
+        color: var(--gold);
+        margin-top: 10px;
+      }
+      .hero-sub {
+        max-width: auto;
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        color: var(--ink-soft);
+        margin-bottom: 44px;
+      }
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 56px;
+      }
+      .hero-stats {
+        display: flex;
+        gap: clamp(28px, 6vw, 64px);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero-stat {
+        text-align: center;
+      }
+      .hero-stat strong {
+        display: block;
+        font-family: var(--ff-display);
+        font-size: 2rem;
+        color: var(--teal-deep);
+      }
+      .hero-stat span {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+      }
+
+      /* ============================================================
+       DIVIDER
+    ============================================================ */
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .divider .line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--aqua-soft),
+          transparent
+        );
+      }
+      .divider .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      /* ============================================================
+       PROBLEMA
+    ============================================================ */
+      #problema {
+        background: var(--teal-deep);
+        color: var(--white);
+      }
+      #problema h2 {
+        color: var(--white);
+      }
+      #problema .eyebrow {
+        color: var(--gold-bright);
+      }
+      #problema .eyebrow::before,
+      #problema .eyebrow::after {
+        background: var(--gold-bright);
+      }
+      #problema p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .dor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2px;
+        margin-top: 52px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .dor-card {
+        background: var(--teal-deep);
+        padding: 34px 28px;
+        border-top: 2px solid var(--gold-bright);
+      }
+      .dor-card h4 {
+        font-family: var(--ff-display);
+        font-size: 1.1rem;
+        color: var(--white);
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .dor-card p {
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      /* ============================================================
+       TRANSFORMAÇÃO / SOLUÇÃO
+    ============================================================ */
+      #transformacao {
+        background: var(--cream);
+      }
+      .transf-quote {
+        max-width: 780px;
+        margin: 40px auto 0;
+        text-align: center;
+        font-family: var(--ff-display);
+        font-style: italic;
+        font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+        line-height: 1.6;
+        color: var(--teal-deep);
+      }
+      .transf-quote span {
+        color: var(--gold);
+      }
+
+      /* ============================================================
+       SOBRE A MENTORIA — cards de estrutura
+    ============================================================ */
+      #estrutura {
+        background: var(--aqua-wash);
+      }
+      .estrutura-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        margin-top: 52px;
+      }
+      .estrutura-card {
+        background: var(--white);
+        padding: 34px 26px;
+        border: 1px solid var(--line);
+        text-align: center;
+        transition: all 0.35s var(--ease);
+      }
+      .estrutura-card:hover {
+        border-color: var(--gold);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(14, 43, 44, 0.08);
+      }
+      .estrutura-icon {
+        width: 44px;
+        height: 44px;
+        margin: 0 auto 18px;
+        color: var(--teal-mid);
+      }
+      .estrutura-card h4 {
+        font-family: var(--ff-display);
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+      }
+      .estrutura-card p {
+        font-size: 0.88rem;
+      }
+      .bonus-strip {
+        margin-top: 44px;
+        background: var(--teal-deep);
+        color: var(--white);
+        padding: 30px 36px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .bonus-strip .tag {
+        display: inline-block;
+        font-size: 0.65rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--teal-deep);
+        background: var(--gold-bright);
+        padding: 5px 14px;
+        margin-bottom: 8px;
+      }
+      .bonus-strip h4 {
+        color: var(--white);
+        font-size: 1.15rem;
+        font-weight: 500;
+      }
+      .bonus-strip p {
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 0.9rem;
+        max-width: 480px;
+      }
+
+      /* ============================================================
+       MÓDULOS — timeline vertical (6 encontros)
+    ============================================================ */
+      #modulos {
+        background: var(--cream);
+      }
+      .timeline {
+        position: relative;
+        margin-top: 56px;
+        padding-left: 46px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 13px;
+        top: 6px;
+        bottom: 6px;
+        width: 1px;
+        background: linear-gradient(180deg, var(--gold), var(--aqua-soft) 90%);
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 6px;
+        cursor: pointer;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -46px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--cream);
+        border: 2px solid var(--gold);
+        transition: all 0.3s var(--ease);
+      }
+      .timeline-item.open::before {
+        background: var(--gold);
+      }
+      .timeline-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 20px 24px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        transition: all 0.3s var(--ease);
+      }
+      .timeline-item.open .timeline-head,
+      .timeline-head:hover {
+        border-color: var(--aqua-soft);
+        box-shadow: 0 10px 28px rgba(14, 43, 44, 0.06);
+      }
+      .timeline-head-text .num {
+        font-family: var(--ff-body);
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        color: var(--gold);
+        text-transform: uppercase;
+      }
+      .timeline-head-text h3 {
+        margin-top: 4px;
+        font-size: 1.05rem;
+      }
+      .timeline-toggle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--teal-mid);
+        flex-shrink: 0;
+        transition: transform 0.3s var(--ease);
+      }
+      .timeline-item.open .timeline-toggle {
+        transform: rotate(45deg);
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .timeline-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.4s var(--ease);
+      }
+      .timeline-body-inner {
+        overflow: hidden;
+      }
+      .timeline-item.open .timeline-body {
+        grid-template-rows: 1fr;
+      }
+      .timeline-body p {
+        padding: 20px 24px 26px;
+        font-size: 0.92rem;
+        margin-top: -4px;
+        background: var(--aqua-wash);
+        border-inline: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      /* ============================================================
+       SOBRE O MENTOR
+    ============================================================ */
+      #mentor {
+        background: var(--teal-deep);
+        color: var(--white);
+      }
+      .mentor-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 20px;
+      }
+      @media (max-width: 820px) {
+        .mentor-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .mentor-visual {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        max-width: 340px;
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .mentor-visual img {
+        width: 800px;
+        height: 600px;
+      }
+      .mentor-name {
+        font-family: var(--ff-display);
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        color: var(--white);
+        margin-bottom: 6px;
+      }
+      .mentor-role {
+        font-size: 0.7rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--gold-bright);
+        margin-bottom: 22px;
+      }
+      #mentor p {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.98rem;
+      }
+      #mentor p + p {
+        margin-top: 14px;
+      }
+      .mentor-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 26px;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold-bright);
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        padding: 8px 18px;
+        border-radius: 40px;
+      }
+
+      /* ============================================================
+       PROVA SOCIAL
+    ============================================================ */
+      /* Grade de depoimentos */
+      .depo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 56px;
+        text-align: left;
+      }
+
+      /* Card individual */
+      .depo-card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(14, 43, 44, 0.04);
+        transition:
+          transform 0.3s var(--ease),
+          box-shadow 0.3s var(--ease),
+          border-color 0.3s var(--ease);
+        display: flex;
+        flex-direction: column;
+      }
+      .depo-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(14, 43, 44, 0.08);
+        border-color: var(--gold);
+      }
+
+      /* Container para imagens e vídeos */
+      .depo-media {
+        width: 100%;
+        border-bottom: 1px solid var(--line);
+        background: var(--aqua-wash);
+      }
+      .depo-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        max-height: 220px;
+      }
+
+      /* Wrapper responsivo para iframe de vídeo (mantém a proporção 16:9) */
+      .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* Proporção 16:9 */
+        height: 0;
+        overflow: hidden;
+      }
+      .video-wrapper iframe,
+      .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Textos do depoimento */
+      .depo-content {
+        padding: 24px;
+        flex-grow: 1; /* Faz o card empurrar o autor lá pra baixo se o texto for curto */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .depo-text {
+        font-family: var(--ff-display);
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--ink-soft);
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      /* Assinatura do autor */
+      .depo-author {
+        font-family: var(--ff-body);
+        font-size: 0.8rem;
+        color: var(--teal-mid);
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+        margin-top: auto; /* Joga a assinatura pro fim do card */
+      }
+      .depo-author strong {
+        color: var(--teal-deep);
+        font-weight: 500;
+      }
+
+      #prova {
+        background: var(--aqua-wash);
+        text-align: center;
+      }
+      .prova-number {
+        font-family: var(--ff-display);
+        font-size: clamp(3rem, 8vw, 5.2rem);
+        color: var(--teal-deep);
+        line-height: 1;
+      }
+      .prova-number span {
+        color: var(--gold);
+      }
+      .prova-label {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+      }
+      .prova-note {
+        max-width: 560px;
+        margin: 40px auto 0;
+        font-style: italic;
+        font-family: var(--ff-display);
+        font-size: 1.15rem;
+        color: var(--teal-deep);
+      }
+      .depo-empty {
+        max-width: 640px;
+        margin: 48px auto 0;
+        padding: 40px;
+        border: 1px dashed var(--aqua-soft);
+        background: var(--white);
+      }
+      .depo-empty p {
+        font-family: var(--ff-display);
+        font-style: italic;
+        color: var(--ink-faint);
+      }
+
+      /* ============================================================
+       OFERTA
+    ============================================================ */
+      #oferta {
+        background: linear-gradient(160deg, var(--teal-deep) 0%, #0a2f30 100%);
+        color: var(--white);
+        text-align: center;
+      }
+      #oferta .eyebrow {
+        color: var(--gold-bright);
+      }
+      #oferta .eyebrow::before,
+      #oferta .eyebrow::after {
+        background: var(--gold-bright);
+      }
+      #oferta h2 {
+        color: var(--white);
+        max-width: 640px;
+        margin-inline: auto;
+      }
+      #oferta > .container > p.lead {
+        max-width: 560px;
+        margin: 18px auto 48px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .oferta-card {
+        max-width: 640px;
+        margin-inline: auto;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        padding: clamp(30px, 5vw, 52px);
+      }
+      .oferta-list {
+        list-style: none;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 36px;
+      }
+      .oferta-list li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .oferta-list li::before {
+        content: "✦";
+        color: var(--gold-bright);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .oferta-note {
+        margin-top: 22px;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      /* ============================================================
+       FAQ
+    ============================================================ */
+      #faq {
+        background: var(--cream);
+      }
+      .faq-list {
+        max-width: 760px;
+        margin: 48px auto 0;
+        border-top: 1px solid var(--line);
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq-q {
+        width: 100%;
+        background: none;
+        border: none;
+        text-align: left;
+        padding: 22px 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        cursor: pointer;
+        font-family: var(--ff-display);
+        font-size: 1.02rem;
+        color: var(--teal-deep);
+      }
+      .faq-q .plus {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        transition: transform 0.3s var(--ease);
+      }
+      .faq-item.active .plus {
+        transform: rotate(45deg);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s var(--ease);
+      }
+      .faq-a.open {
+        max-height: 300px;
+      }
+      .faq-a p {
+        padding: 0 4px 22px;
+        font-size: 0.92rem;
+      }
+
+      /* ============================================================
+       CTA FINAL
+    ============================================================ */
+      #cta-final {
+        background: var(--white);
+        text-align: center;
+      }
+      #cta-final .divider {
+        margin-bottom: 30px;
+      }
+      #cta-final p.lead {
+        max-width: 500px;
+        margin: 16px auto 40px;
+      }
+
+      /* ============================================================
+       FOOTER — estrutura idêntica à referência, paleta nova
+    ============================================================ */
+      footer {
+        position: relative;
+        z-index: 1;
+        padding: 48px 5%;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        text-align: center;
+        background: var(--white);
+      }
+      footer .footer-logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--teal-deep);
+      }
+      footer .footer-logo img {
+        width: 80px;
+        height: 80px;
+      }
+      footer p {
+        font-size: 1rem;
+        color: var(--ink-faint);
+        margin: 0;
+      }
+      footer p.suporte {
+        font-size: 1.4rem;
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        color: var(--ink-soft);
+      }
+      footer a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+      @media (max-width: 640px) {
+        .timeline {
+          padding-left: 30px;
+        }
+        .timeline-item::before {
+          left: -30px;
+        }
+        .bonus-strip {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+     HERO
+============================================================ -->
+    <section id="hero">
+      <div class="container">
+        <img src="/fotos/logo.jpeg" alt="O DNA dos Espaços" class="reveal" />
+        <div class="hero-badge reveal">Mentoria Individual · 3 Meses</div>
+
+        <h1 class="reveal" style="transition-delay: 0.1s">
+          O DNA dos Espaços
+          <span class="veil">Apometria de Ambientes com Flávio Rodrigues</span>
+        </h1>
+
+        <p class="hero-sub reveal" style="transition-delay: 0.2s">
+          Todo espaço guarda uma memória, uma vibração, um código invisível que
+          influencia quem vive nele. Aprenda a lê-lo, higienizá-lo e
+          reprogramá-lo — com técnica, ética e profundidade.
+        </p>
+
+        <div class="hero-ctas reveal" style="transition-delay: 0.3s">
+          <a href="#oferta" class="btn btn-primary"
+            >Quero Minha Vaga na Mentoria</a
+          >
+          <a href="#modulos" class="btn btn-outline">Ver o Programa</a>
+        </div>
+
+        <div class="hero-stats reveal" style="transition-delay: 0.4s">
+          <div class="hero-stat">
+            <strong>+100</strong>
+            <span>Atendimentos em 4 meses</span>
+          </div>
+          <div class="hero-stat">
+            <strong>6</strong>
+            <span>Encontros Quinzenais</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1:1</strong>
+            <span>Mentoria Individual</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     PROBLEMA
+============================================================ -->
+    <section id="problema">
+      <div class="container">
+        <span class="eyebrow">O Ponto Cego</span>
+        <h2 class="text-center reveal">
+          Você sente que falta o último passo entre saber e atuar?
+        </h2>
+        <p
+          class="text-center reveal"
+          style="max-width: 620px; margin-inline: auto"
+        >
+          Muita gente que se aproxima da Apometria de Ambientes esbarra sempre
+          no mesmo lugar — não é falta de teoria, é falta de estrutura para
+          transformar percepção em atuação segura.
+        </p>
+
+        <div class="dor-grid">
+          <div class="dor-card reveal">
+            <h4>O lar como espelho</h4>
+            <p>
+              Você percebe que ambientes carregam energias, mas não sabe como
+              higienizá-los de forma consistente e segura.
+            </p>
+          </div>
+          <div class="dor-card reveal" style="transition-delay: 0.08s">
+            <h4>Teoria sem prática</h4>
+            <p>
+              Já estudou apometria de ambientes, mas trava na hora de atuar de
+              verdade — falta protocolo, falta confiança.
+            </p>
+          </div>
+          <div class="dor-card reveal" style="transition-delay: 0.16s">
+            <h4>Vontade de profissionalizar</h4>
+            <p>
+              Sente o chamado para atender outras pessoas e espaços, mas não
+              sabe como estruturar isso como atuação séria.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     TRANSFORMAÇÃO
+============================================================ -->
+    <section id="transformacao">
+      <div class="container-narrow text-center">
+        <span class="eyebrow">A Virada</span>
+        <h2 class="reveal">O que muda quando você domina o DNA dos espaços</h2>
+        <p class="reveal" style="margin-top: 18px">
+          A Mentoria integra teoria e prática até o ponto em que a percepção
+          multidimensional deixa de ser abstrata e se torna ferramenta de
+          trabalho — em lares, consultórios, empresas e instituições.
+        </p>
+        <p class="transf-quote reveal" style="transition-delay: 0.1s">
+          "Não se trata de sentir energia.
+          <span
+            >Trata-se de saber exatamente o que fazer com o que você
+            sente.</span
+          >"
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     ESTRUTURA DA MENTORIA
+============================================================ -->
+    <section id="estrutura">
+      <div class="container">
+        <span class="eyebrow">A Mentoria</span>
+        <h2 class="text-center reveal">Estrutura Completa de Formação</h2>
+        <p
+          class="text-center reveal"
+          style="max-width: 580px; margin-inline: auto"
+        >
+          Um processo individual, guiado por Flávio Rodrigues, para levar você
+          da percepção inicial até a atuação profissional segura.
+        </p>
+
+        <div class="estrutura-grid">
+          <div class="estrutura-card reveal">
+            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
+              <circle
+                cx="24"
+                cy="24"
+                r="18"
+                stroke="#135C5F"
+                stroke-width="1.4"
+              />
+              <circle cx="24" cy="24" r="4" fill="#B8912E" />
+            </svg>
+            <h4>Mentoria Individual</h4>
+            <p>Atenção 1:1, respeitando seu ritmo e seu contexto de atuação.</p>
+          </div>
+          <div class="estrutura-card reveal" style="transition-delay: 0.06s">
+            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
+              <rect
+                x="10"
+                y="10"
+                width="28"
+                height="28"
+                rx="2"
+                stroke="#135C5F"
+                stroke-width="1.4"
+              />
+              <path
+                d="M16 24H32M24 16V32"
+                stroke="#B8912E"
+                stroke-width="1.4"
+              />
+            </svg>
+            <h4>6 Encontros Quinzenais</h4>
+            <p>
+              3 meses de imersão progressiva, com tempo para integrar cada
+              etapa.
+            </p>
+          </div>
+          <div class="estrutura-card reveal" style="transition-delay: 0.12s">
+            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
+              <path
+                d="M24 8L38 16V32L24 40L10 32V16L24 8Z"
+                stroke="#135C5F"
+                stroke-width="1.4"
+              />
+            </svg>
+            <h4>Foco na Atuação Real</h4>
+            <p>
+              Diagnóstico, limpeza, harmonização e supervisão de casos práticos.
+            </p>
+          </div>
+          <div class="estrutura-card reveal" style="transition-delay: 0.18s">
+            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
+              <circle
+                cx="24"
+                cy="24"
+                r="14"
+                stroke="#135C5F"
+                stroke-width="1.4"
+              />
+              <path
+                d="M24 17V24L29 29"
+                stroke="#B8912E"
+                stroke-width="1.4"
+                stroke-linecap="round"
+              />
+            </svg>
+            <h4>Ética & Segurança</h4>
+            <p>
+              Limites de atuação claros para trabalhar com responsabilidade.
+            </p>
+          </div>
+        </div>
+
+        <div class="bonus-strip reveal">
+          <div>
+            <span class="tag">Bônus Incluso</span>
+            <h4>Curso gravado com toda a metodologia</h4>
+            <p>
+              Acesso vitalício na plataforma Kiwify, para revisitar cada etapa
+              sempre que precisar.
+            </p>
+          </div>
+          <a href="#oferta" class="btn btn-primary">Garantir Minha Vaga</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     MÓDULOS — 6 ENCONTROS
+============================================================ -->
+    <section id="modulos">
+      <div class="container-narrow">
+        <span class="eyebrow">O Percurso</span>
+        <h2 class="text-center reveal">Os 6 Encontros da Jornada</h2>
+        <p
+          class="text-center reveal"
+          style="max-width: 560px; margin-inline: auto"
+        >
+          Clique em cada encontro para conhecer o que será trabalhado.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item reveal" data-encontro>
+            <div class="timeline-head">
+              <div class="timeline-head-text">
+                <span class="num">Encontro 1</span>
+                <h3>Fundamentos da Apometria Multidimensional de Ambientes</h3>
+              </div>
+              <div class="timeline-toggle">+</div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-body-inner">
+                <p>
+                  O ambiente como organismo vivo, sua estrutura
+                  multidimensional, princípios éticos de atuação e
+                  desenvolvimento da percepção inicial.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="timeline-item reveal"
+            data-encontro
+            style="transition-delay: 0.05s"
+          >
+            <div class="timeline-head">
+              <div class="timeline-head-text">
+                <span class="num">Encontro 2</span>
+                <h3>Leitura e Diagnóstico</h3>
+              </div>
+              <div class="timeline-toggle">+</div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-body-inner">
+                <p>
+                  Identificação de interferências, formas-pensamento e miasmas
+                  energéticos, com prática guiada de diagnóstico do campo do
+                  ambiente.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="timeline-item reveal"
+            data-encontro
+            style="transition-delay: 0.1s"
+          >
+            <div class="timeline-head">
+              <div class="timeline-head-text">
+                <span class="num">Encontro 3</span>
+                <h3>Limpeza e Desacoplamento Energético</h3>
+              </div>
+              <div class="timeline-toggle">+</div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-body-inner">
+                <p>
+                  Purificação de campos, desvinculação de padrões recorrentes e
+                  assistência multidimensional durante o processo de limpeza.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="timeline-item reveal"
+            data-encontro
+            style="transition-delay: 0.15s"
+          >
+            <div class="timeline-head">
+              <div class="timeline-head-text">
+                <span class="num">Encontro 4</span>
+                <h3>Harmonização e Reprogramação Vibracional</h3>
+              </div>
+              <div class="timeline-toggle">+</div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-body-inner">
+                <p>
+                  Requalificação de campos, implantação de novos referenciais
+                  vibracionais e construção de campos de proteção e selamentos.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="timeline-item reveal"
+            data-encontro
+            style="transition-delay: 0.2s"
+          >
+            <div class="timeline-head">
+              <div class="timeline-head-text">
+                <span class="num">Encontro 5</span>
+                <h3>Aplicações Práticas</h3>
+              </div>
+              <div class="timeline-toggle">+</div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-body-inner">
+                <p>
+                  Atuação em ambientes residenciais, terapêuticos, empresariais
+                  e institucionais, com dinâmicas e estudos de caso reais.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="timeline-item reveal"
+            data-encontro
+            style="transition-delay: 0.25s"
+          >
+            <div class="timeline-head">
+              <div class="timeline-head-text">
+                <span class="num">Encontro 6</span>
+                <h3>Integração e Supervisão de Casos</h3>
+              </div>
+              <div class="timeline-toggle">+</div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-body-inner">
+                <p>
+                  Construção do seu protocolo próprio de atendimento, definição
+                  de limites de atuação e vivência prática de um atendimento
+                  ambiental completo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     SOBRE O MENTOR
+============================================================ -->
+    <section id="mentor">
+      <div class="container">
+        <div class="mentor-grid">
+          <div class="mentor-visual reveal">
+            <img src="/fotos/flavio.jpg" alt="" />
+          </div>
+          <div class="reveal" style="transition-delay: 0.1s">
+            <span class="eyebrow left">O Mentor</span>
+            <div class="mentor-name">Flávio Rodrigues</div>
+            <div class="mentor-role">
+              Biólogo · Professor · Facilitador Espiritual
+            </div>
+            <p>
+              Desde cedo, Flávio cultivou uma curiosidade insaciável pelo mundo
+              — tanto o visível quanto o invisível. Como biólogo e professor,
+              mergulhou na ciência com o mesmo fervor com que buscava
+              compreender os mistérios da existência humana, percebendo que
+              matéria e espírito não são opostos, mas faces de uma mesma
+              totalidade.
+            </p>
+            <p>
+              Essa inquietação o levou a navegar por diversas culturas,
+              religiões e tradições ao redor do mundo, absorvendo valores e
+              modos de viver que expandissem sua própria consciência. Dessa
+              jornada nasceu uma espiritualidade autêntica, livre de dogmas e
+              profundamente enraizada na experiência vivida.
+            </p>
+            <p>
+              Hoje, Flávio integra esse repertório científico, cultural e
+              espiritual para atuar como um cirurgião de consciências — e de
+              espaços — guiando com precisão e sensibilidade cada aluno que se
+              lança nessa jornada.
+            </p>
+            <div class="mentor-badge">✦ +100 Atendimentos Realizados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     PROVA SOCIAL
+============================================================ -->
+    <section id="prova">
+      <div class="container-narrow">
+        <span class="eyebrow">Resultados</span>
+        <div class="prova-number reveal">+100<span>.</span></div>
+        <div class="prova-label reveal">
+          Atendimentos realizados em apenas 4 meses
+        </div>
+        <p class="prova-note reveal">
+          "A demanda por defesa espiritual do lar é real — e crescente.
+          Formar-se com profundidade é a diferença entre sentir e efetivamente
+          atuar."
+        </p>
+
+        <div class="depo-grid reveal" style="transition-delay: 0.2s">
+          <div class="depo-card">
+            <div class="depo-content">
+              <p class="depo-text">
+                "Meu Imóvel estava a 9 meses vazio, consegui alugar após uma
+                semana do trabalho de vocês. Gratidão"
+              </p>
+              <p class="depo-author">
+                <strong>Angela Magudo</strong> · Corretora de Imóveis
+              </p>
+            </div>
+          </div>
+
+          <div class="depo-card">
+            <div class="depo-media video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/zEAgtxUbbCc?si=ysUhZghLzNMOpncb"
+                title="YouTube video player"
+                frameborder="0"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="depo-content">
+              <p class="depo-text">
+                "Me conectei muito mais com minha própria mediunidade."
+              </p>
+              <p class="depo-author">
+                <strong>Marlene Dias</strong> · Terapeuta
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     OFERTA
+============================================================ -->
+    <section id="oferta">
+      <div class="container">
+        <span class="eyebrow">Sua Vaga</span>
+        <h2>
+          Torne-se apto a ler, higienizar e reprogramar o DNA de qualquer espaço
+        </h2>
+        <p class="lead">
+          Uma jornada individual de 3 meses ao lado de Flávio Rodrigues, para
+          transformar percepção em atuação real, ética e segura.
+        </p>
+
+        <div class="oferta-card">
+          <ul class="oferta-list">
+            <li>Mentoria 100% individual, com 6 encontros quinzenais</li>
+            <li>3 meses de acompanhamento direto com Flávio Rodrigues</li>
+            <li>
+              Percurso completo: fundamentos, diagnóstico, limpeza,
+              harmonização, prática e supervisão de casos
+            </li>
+            <li>
+              Bônus: curso gravado com toda a metodologia, acesso vitalício na
+              Kiwify
+            </li>
+            <li>
+              Construção do seu próprio protocolo de atendimento ao final da
+              jornada
+            </li>
+          </ul>
+          <a
+            href=""
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Quero fazer minha aplicação</a
+          >
+          <p class="oferta-note">
+            Vagas individuais limitadas · Atendimento por ordem de contato
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     FAQ
+============================================================ -->
+    <section id="faq">
+      <div class="container-narrow">
+        <span class="eyebrow">Dúvidas Frequentes</span>
+        <h2 class="text-center reveal">Antes de Começar</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              <span>Preciso já ter formação em apometria para entrar?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Não. A mentoria acolhe tanto estudantes de espiritualidade
+                quanto terapeutas que já conhecem apometria de ambientes, mas
+                travam na hora de atuar. O percurso é construído desde os
+                fundamentos.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              <span>Como funcionam os encontros?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                São 6 encontros individuais quinzenais, ao longo de 3 meses,
+                conduzidos diretamente por Flávio Rodrigues, com foco em teoria
+                e prática guiada.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              <span>Vou sair apto para atender profissionalmente?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Sim. O Encontro 6 é dedicado à construção do seu protocolo de
+                atendimento e aos limites éticos de atuação, com vivência
+                prática de um atendimento ambiental completo.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              <span>O que é o bônus da plataforma Kiwify?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                É um curso gravado com toda a metodologia trabalhada na
+                mentoria, para você revisitar sempre que precisar, com acesso
+                vitalício.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">
+              <span>Como tiro outras dúvidas antes de entrar?</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Fale diretamente pelo WhatsApp através do botão nesta página — a
+                equipe esclarece qualquer dúvida antes da sua decisão.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     CTA FINAL
+============================================================ -->
+    <section id="cta-final">
+      <div class="container-narrow">
+        <div class="divider">
+          <div class="line"></div>
+          <div class="dot"></div>
+          <div class="line"></div>
+        </div>
+        <h2 class="reveal">
+          Todo espaço tem um DNA. <em>Aprenda a lê-lo.</em>
+        </h2>
+        <p class="lead reveal">
+          Se você sente o chamado para proteger e transformar ambientes, essa é
+          a jornada para transformar essa percepção em atuação real.
+        </p>
+        <a
+          href=""
+          class="btn btn-primary reveal"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Quero Minha Vaga na Mentoria</a
+        >
+      </div>
+    </section>
+
+    <!-- ============================================================
+     FOOTER
+============================================================ -->
+    <footer>
+      <div class="footer-logo">
+        <img src="/fotos/logo.jpeg" alt="" />
+      </div>
+      <p class="suporte">SUPORTE</p>
+      <p style="margin-top: 0.1rem">
+        © 2026 Holos Terapeutas Integrativos · O DNA dos Espaços - Todos os
+        direitos reservados
+      </p>
+      <p style="margin-top: 0.1rem">
+        <a
+          href="https://wa.link/oyvq4l"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
+        |
+        <a
+          href="https://www.instagram.com/holosterapeutasintegrativos/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Instagram</a
+        >
+      </p>
+      <p style="margin-top: 0.1rem; font-size: 1rem">
+        Arquitetura e design desta página por
+        <a
+          href="https://levymelo.netlify.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Levy Melo — DEV de Sistemas</a
+        >
+      </p>
+    </footer>
+
+    <!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+    <script>
+      /* reveal on scroll */
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              revealObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => revealObserver.observe(el));
+
+      /* timeline accordion (encontros) */
+      document.querySelectorAll("[data-encontro]").forEach((item) => {
+        item.querySelector(".timeline-head").addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+          document
+            .querySelectorAll("[data-encontro]")
+            .forEach((i) => i.classList.remove("open"));
+          if (!isOpen) item.classList.add("open");
+        });
+      });
+
+      /* FAQ accordion */
+      function toggleFaq(btn) {
+        const item = btn.parentElement;
+        const answer = item.querySelector(".faq-a");
+        const isOpen = item.classList.contains("active");
+        document.querySelectorAll(".faq-item").forEach((i) => {
+          i.classList.remove("active");
+          i.querySelector(".faq-a").classList.remove("open");
+        });
+        if (!isOpen) {
+          item.classList.add("active");
+          answer.classList.add("open");
+        }
+      }
+    </script>
+  </body>
+</html>

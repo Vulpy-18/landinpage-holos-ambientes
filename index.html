@@ -4,648 +4,719 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      O DNA dos Espaços — Mentoria Apometria de Ambientes | Flávio Rodrigues
+      Mentoria Apometria de Ambientes — O DNA dos Espaços | Flávio Rodrigues
     </title>
+    <meta
+      name="description"
+      content="Mentoria individual de 3 meses com Flávio Rodrigues para terapeutas e estudantes que querem atuar com segurança e ética na apometria de ambientes."
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
 
     <style>
       :root {
-        --teal-deep: #0b3d3f;
-        --teal: #135c5f;
-        --teal-mid: #1f7a80;
-        --aqua: #4fb8ae;
-        --aqua-soft: #cfe9e4;
-        --aqua-wash: #f1f8f6;
-        --gold: #b8912e;
-        --gold-bright: #d4af37;
-        --gold-soft: rgba(184, 145, 46, 0.14);
-        --violet: #8b7cc4;
-        --violet-soft: rgba(139, 124, 196, 0.12);
-        --cream: #faf8f4;
-        --ink: #0e2b2c;
-        --ink-soft: rgb(14, 43, 44);
-        --ink-faint: rgb(14, 43, 44);
-        --line: rgba(14, 43, 44, 0.1);
-        --white: #ffffff;
-
-        --ff-display: "Playfair Display", serif;
-        --ff-body: "Jost", sans-serif;
-
-        --radius: 2px;
-        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        --bg-deep: #011d24;
+        --bg-panel: #013441;
+        --bg-panel-2: #22004493;
+        --line-aqua: #0b667c;
+        --gold: #c9a24b;
+        --gold-light: #e7cd8b;
+        --cream: #efe6d3;
+        --cream-dim: #c9bfa9;
+        --violet: #7a63a8;
+        --violet-light: #9c87c4;
+        --white-soft: #f7f3e9;
       }
 
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
       html {
         scroll-behavior: smooth;
       }
       body {
-        font-family: var(--ff-body);
-        background: var(--cream);
-        color: var(--ink);
+        margin: 0;
+        background: var(--bg-deep);
+        color: var(--cream);
+        font-family: "Lato", sans-serif;
+        font-weight: 300;
         line-height: 1.7;
-        overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
-
-      .container {
-        width: min(92%, 1080px);
-        margin-inline: auto;
-      }
-      .container-narrow {
-        width: min(92%, 720px);
-        margin-inline: auto;
-      }
-      .container img {
-        width: 200px;
-        height: 200px;
-      }
-      section {
-        padding-block: clamp(64px, 9vw, 128px);
-        position: relative;
-      }
-
       h1,
       h2,
       h3,
       h4 {
-        font-family: var(--ff-display);
-        font-weight: 500;
-        line-height: 1.18;
-        color: var(--teal-deep);
+        font-family: "Playfair Display", serif;
+        color: var(--white-soft);
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: 0.01em;
       }
-      h2 {
-        font-size: clamp(1.9rem, 4vw, 2.9rem);
+      a {
+        text-decoration: none;
+        color: inherit;
       }
-      h3 {
-        font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+      .eyebrow {
+        font-family: "Lato", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        font-size: 0.72rem;
+        color: var(--gold-light);
+        font-weight: 600;
       }
-      p {
-        color: var(--ink-soft);
-        font-weight: 300;
+      .container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
-      em {
-        font-style: italic;
-        color: var(--gold);
+      section {
+        padding: 100px 0;
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        section {
+          padding: 64px 0;
+        }
       }
 
-      .eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        justify-content: center;
-        font-family: var(--ff-body);
-        font-size: 0.72rem;
-        letter-spacing: 0.32em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 20px;
-      }
-      .eyebrow::before,
-      .eyebrow::after {
-        content: "";
-        width: 28px;
-        height: 1px;
-        background: var(--gold);
+      /* ---------- divider: linha de energia ---------- */
+      .energy-line {
+        width: 1px;
+        height: 64px;
+        margin: 0 auto;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--gold),
+          transparent
+        );
         opacity: 0.6;
       }
-      .eyebrow.left {
-        justify-content: flex-start;
-      }
-      .eyebrow.left::before {
-        display: none;
-      }
-
-      .text-center {
-        text-align: center;
-      }
-
-      /* reveal */
-      .reveal {
-        opacity: 0;
-        transform: translateY(28px);
-        transition:
-          opacity 0.8s var(--ease),
-          transform 0.8s var(--ease);
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      /* ============================================================
-       CTA BUTTONS
-    ============================================================ */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 16px 38px;
-        font-family: var(--ff-body);
-        font-size: 0.78rem;
-        font-weight: 500;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: var(--radius);
-        cursor: pointer;
-        transition: all 0.35s var(--ease);
-        border: 1px solid transparent;
-      }
-      .btn-primary {
-        background: linear-gradient(120deg, var(--gold-bright), var(--gold));
-        color: var(--white);
-        box-shadow: 0 10px 28px rgba(184, 145, 46, 0.28);
-      }
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 14px 36px rgba(184, 145, 46, 0.38);
-      }
-      .btn-outline {
-        background: transparent;
-        color: var(--teal-deep);
-        border-color: var(--teal-deep);
-      }
-      .btn-outline:hover {
-        background: var(--teal-deep);
-        color: var(--white);
-      }
-
-      /* ============================================================
-       HERO
-    ============================================================ */
-      #hero {
-        min-height: 100svh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding-top: 120px;
-        background:
-          radial-gradient(
-            ellipse 60% 30% at 50% 0%,
-            var(--aqua-wash) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            ellipse 50% 40% at 85% 90%,
-            var(--violet-soft) 0%,
-            transparent 60%
-          ),
-          var(--white);
-      }
-      .hero-badge {
-        font-family: var(--ff-body);
-        font-size: 0.7rem;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        color: var(--teal-mid);
-        border: 1px solid var(--aqua-soft);
-        background: var(--white);
-        padding: 8px 20px;
-        border-radius: 40px;
-        margin-bottom: 36px;
-      }
-      #hero h1 {
-        max-width: auto;
-        font-size: clamp(2.3rem, 5.4vw, 4.1rem);
-        margin-bottom: 22px;
-      }
-      #hero h1 .veil {
-        display: block;
-        font-family: var(--ff-display);
-        font-style: italic;
-        font-weight: 400;
-        font-size: 0.44em;
-        color: var(--gold);
-        margin-top: 10px;
-      }
-      .hero-sub {
-        max-width: auto;
-        font-size: clamp(1rem, 1.6vw, 1.15rem);
-        color: var(--ink-soft);
-        margin-bottom: 44px;
-      }
-      .hero-ctas {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        justify-content: center;
-        margin-bottom: 56px;
-      }
-      .hero-stats {
-        display: flex;
-        gap: clamp(28px, 6vw, 64px);
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .hero-stat {
-        text-align: center;
-      }
-      .hero-stat strong {
-        display: block;
-        font-family: var(--ff-display);
-        font-size: 2rem;
-        color: var(--teal-deep);
-      }
-      .hero-stat span {
-        font-size: 0.7rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--ink-faint);
-      }
-
-      /* ============================================================
-       DIVIDER
-    ============================================================ */
-      .divider {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        max-width: 420px;
-        margin: 0 auto;
-      }
-      .divider .line {
-        flex: 1;
+      .rule {
         height: 1px;
+        width: 100%;
         background: linear-gradient(
-          90deg,
+          to right,
           transparent,
-          var(--aqua-soft),
+          var(--line-aqua),
           transparent
         );
       }
-      .divider .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--gold);
-      }
 
-      /* ============================================================
-       PROBLEMA
-    ============================================================ */
-      #problema {
-        background: var(--teal-deep);
-        color: var(--white);
+      /* ---------- header / nav ---------- */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(7, 22, 24, 0.82);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(201, 162, 75, 0.15);
       }
-      #problema h2 {
-        color: var(--white);
-      }
-      #problema .eyebrow {
-        color: var(--gold-bright);
-      }
-      #problema .eyebrow::before,
-      #problema .eyebrow::after {
-        background: var(--gold-bright);
-      }
-      #problema p {
-        color: rgba(255, 255, 255, 0.72);
-      }
-      .dor-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 2px;
-        margin-top: 52px;
-        background: rgba(255, 255, 255, 0.08);
-      }
-      .dor-card {
-        background: var(--teal-deep);
-        padding: 34px 28px;
-        border-top: 2px solid var(--gold-bright);
-      }
-      .dor-card h4 {
-        font-family: var(--ff-display);
-        font-size: 1.1rem;
-        color: var(--white);
-        font-weight: 500;
-        margin-bottom: 10px;
-      }
-      .dor-card p {
-        font-size: 0.92rem;
-        color: rgba(255, 255, 255, 0.65);
-      }
-
-      /* ============================================================
-       TRANSFORMAÇÃO / SOLUÇÃO
-    ============================================================ */
-      #transformacao {
-        background: var(--cream);
-      }
-      .transf-quote {
-        max-width: 780px;
-        margin: 40px auto 0;
-        text-align: center;
-        font-family: var(--ff-display);
-        font-style: italic;
-        font-size: clamp(1.35rem, 2.8vw, 1.85rem);
-        line-height: 1.6;
-        color: var(--teal-deep);
-      }
-      .transf-quote span {
-        color: var(--gold);
-      }
-
-      /* ============================================================
-       SOBRE A MENTORIA — cards de estrutura
-    ============================================================ */
-      #estrutura {
-        background: var(--aqua-wash);
-      }
-      .estrutura-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 24px;
-        margin-top: 52px;
-      }
-      .estrutura-card {
-        background: var(--white);
-        padding: 34px 26px;
-        border: 1px solid var(--line);
-        text-align: center;
-        transition: all 0.35s var(--ease);
-      }
-      .estrutura-card:hover {
-        border-color: var(--gold);
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(14, 43, 44, 0.08);
-      }
-      .estrutura-icon {
-        width: 44px;
-        height: 44px;
-        margin: 0 auto 18px;
-        color: var(--teal-mid);
-      }
-      .estrutura-card h4 {
-        font-family: var(--ff-display);
-        font-size: 1.05rem;
-        margin-bottom: 8px;
-      }
-      .estrutura-card p {
-        font-size: 0.88rem;
-      }
-      .bonus-strip {
-        margin-top: 44px;
-        background: var(--teal-deep);
-        color: var(--white);
-        padding: 30px 36px;
+      .nav-wrap {
         display: flex;
         align-items: center;
-        gap: 24px;
-        flex-wrap: wrap;
         justify-content: space-between;
+        padding: 18px 24px;
+        max-width: 1140px;
+        margin: 0 auto;
       }
-      .bonus-strip .tag {
-        display: inline-block;
-        font-size: 0.65rem;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        color: var(--teal-deep);
-        background: var(--gold-bright);
-        padding: 5px 14px;
-        margin-bottom: 8px;
+      .brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        color: var(--white-soft);
+        margin-right: -10px;
+        margin-left: -20px;
       }
-      .bonus-strip h4 {
-        color: var(--white);
-        font-size: 1.15rem;
-        font-weight: 500;
-      }
-      .bonus-strip p {
-        color: rgba(255, 255, 255, 0.68);
-        font-size: 0.9rem;
-        max-width: 480px;
+      .brand span {
+        color: var(--gold-light);
+        font-style: italic;
       }
 
-      /* ============================================================
-       MÓDULOS — timeline vertical (6 encontros)
-    ============================================================ */
-      #modulos {
-        background: var(--cream);
+      @media (min-width: 900px) {
+        .brand {
+          font-size: 0.8rem;
+          margin-left: -15px;
+        }
       }
+
+      .nav-wrap ul {
+        display: none;
+      }
+      @media (min-width: 900px) {
+        .nav-wrap ul {
+          display: flex;
+          gap: 36px;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          font-size: 0.82rem;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          margin-top: 10px;
+        }
+      }
+      .nav-wrap ul li a {
+        color: var(--cream-dim);
+        transition: color 0.25s ease;
+      }
+      .nav-wrap ul li a:hover {
+        color: var(--gold-light);
+      }
+      .nav-cta {
+        display: none;
+      }
+      @media (min-width: 900px) {
+        .nav-cta {
+          display: inline-block;
+          border: 1px solid var(--gold);
+          color: var(--gold-light);
+          padding: 9px 5px;
+          font-size: 0.78rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          border-radius: 2px;
+          transition: all 0.3s ease;
+        }
+        .nav-cta:hover {
+          background: var(--gold);
+          color: #071618;
+        }
+      }
+      .nav-links {
+        display: none;
+      }
+      @media (min-width: 900px) {
+        .nav-links {
+          display: flex;
+        }
+      }
+      .burger {
+        display: flex;
+        background: none;
+        border: none;
+        color: var(--cream);
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+      @media (min-width: 900px) {
+        .burger {
+          display: none;
+        }
+      }
+      #mobileMenu {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg-panel);
+        border-top: 1px solid rgba(201, 162, 75, 0.15);
+      }
+      #mobileMenu.open {
+        display: flex;
+      }
+      #mobileMenu a {
+        padding: 16px 24px;
+        border-bottom: 1px solid rgba(201, 162, 75, 0.08);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--cream-dim);
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 120px;
+        position: relative;
+        background:
+          radial-gradient(
+            ellipse at 70% 20%,
+            rgba(122, 99, 168, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 20% 80%,
+            rgba(201, 162, 75, 0.08),
+            transparent 50%
+          ),
+          var(--bg-deep);
+      }
+      .hero-grid {
+        display: flex;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 60px;
+        align-items: center;
+        text-align: center;
+      }
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+          text-align: center;
+        }
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        line-height: 1.12;
+        margin: 18px 0 22px;
+        text-align: center;
+        align-items: center;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--gold-light);
+      }
+      .hero p.lead {
+        font-size: 1.08rem;
+        color: var(--cream-dim);
+
+        margin-bottom: 34px;
+        text-align: center;
+        align-items: center;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        color: #0c2325;
+        font-weight: 700;
+        font-size: 0.92rem;
+        letter-spacing: 0.03em;
+        padding: 16px 32px;
+        border-radius: 2px;
+        box-shadow: 0 8px 30px rgba(201, 162, 75, 0.25);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 36px rgba(201, 162, 75, 0.38);
+      }
+
+      .btn-primary.programa {
+        display: flex;
+        margin-top: 150px;
+        margin-bottom: -90px;
+        margin-inline: auto;
+        width: min(100%, 300px);
+        text-align: center;
+        justify-content: center;
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(239, 230, 211, 0.3);
+        color: var(--cream);
+        font-size: 0.88rem;
+        padding: 15px 28px;
+        border-radius: 2px;
+        transition:
+          border-color 0.3s ease,
+          color 0.3s ease;
+      }
+      .btn-ghost:hover {
+        border-color: var(--gold-light);
+        color: var(--gold-light);
+      }
+      .hero-actions {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      /* signature: concentric field rings around floorplan mark */
+      .hero-logo {
+        width: 100%;
+      }
+
+      /* ---------- section headers ---------- */
+      .sec-head {
+        max-width: 640px;
+        margin: 0 auto 56px;
+        text-align: center;
+      }
+      .sec-head h2 {
+        font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+        margin-top: 14px;
+      }
+      .sec-head p {
+        color: var(--cream-dim);
+        margin-top: 16px;
+        font-size: 1rem;
+      }
+
+      /* ---------- dores ---------- */
+      .pain-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: rgba(201, 162, 75, 0.14);
+        border: 1px solid rgba(201, 162, 75, 0.14);
+      }
+      @media (max-width: 768px) {
+        .pain-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .pain-card {
+        background: var(--bg-panel);
+        padding: 40px 36px;
+      }
+      .pain-card .tag {
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--violet-light);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .pain-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+      .pain-card p {
+        color: var(--cream-dim);
+        font-size: 0.96rem;
+      }
+
+      /* ---------- mentor ---------- */
+      .mentor-wrap {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 56px;
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .mentor-wrap {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+      }
+      .mentor-photo {
+        border-radius: 2px;
+        position: relative;
+      }
+
+      .mentor-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: auto;
+        border-radius: 2px;
+      }
+
+      @media (max-width: 900px) {
+        .mentor-photo {
+          margin-inline: auto;
+          width: min(100%, 600px);
+          height: auto;
+        }
+      }
+
+      .mentor-photo::before {
+        content: "";
+        position: absolute;
+        inset: -10px;
+        border: 1px solid rgba(201, 162, 75, 0.35);
+        z-index: -1;
+      }
+      .mentor-text h2 {
+        font-size: clamp(1.7rem, 3vw, 2.2rem);
+        margin-bottom: 20px;
+      }
+      .mentor-text p {
+        color: var(--cream-dim);
+        margin-bottom: 16px;
+      }
+      .mentor-text p strong {
+        color: var(--gold-light);
+        font-weight: 700;
+      }
+      .mentor-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+      .mentor-stats div {
+        border-left: 1px solid var(--gold);
+        padding-left: 14px;
+      }
+      .mentor-stats .num {
+        font-family: "Playfair Display", serif;
+        font-size: 1.9rem;
+        color: var(--white-soft);
+        display: block;
+      }
+      .mentor-stats .lbl {
+        font-size: 0.75rem;
+        color: var(--cream-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* ---------- transformação ---------- */
+      .transform-band {
+        background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel));
+        border-top: 1px solid rgba(201, 162, 75, 0.14);
+        border-bottom: 1px solid rgba(201, 162, 75, 0.14);
+      }
+      .transform-band .sec-head p {
+        color: var(--cream);
+      }
+      .transform-quote {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+        text-align: center;
+        max-width: 820px;
+        margin: 0 auto;
+        color: var(--white-soft);
+        line-height: 1.5;
+      }
+      .transform-quote .accent {
+        color: var(--violet-light);
+      }
+
+      /* ---------- programa / encontros ---------- */
       .timeline {
         position: relative;
-        margin-top: 56px;
-        padding-left: 46px;
+        max-width: 820px;
+        margin: 0 auto;
       }
       .timeline::before {
         content: "";
         position: absolute;
-        left: 13px;
-        top: 6px;
-        bottom: 6px;
+        left: 29px;
+        top: 10px;
+        bottom: 10px;
         width: 1px;
-        background: linear-gradient(180deg, var(--gold), var(--aqua-soft) 90%);
+        background: linear-gradient(
+          to bottom,
+          var(--gold),
+          var(--violet),
+          var(--gold)
+        );
+        opacity: 0.4;
       }
-      .timeline-item {
+      @media (max-width: 640px) {
+        .timeline::before {
+          left: 19px;
+        }
+      }
+      .tl-item {
         position: relative;
-        margin-bottom: 6px;
-        cursor: pointer;
-      }
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -46px;
-        top: 6px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--cream);
-        border: 2px solid var(--gold);
-        transition: all 0.3s var(--ease);
-      }
-      .timeline-item.open::before {
-        background: var(--gold);
-      }
-      .timeline-head {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-        padding: 20px 24px;
-        background: var(--white);
-        border: 1px solid var(--line);
-        transition: all 0.3s var(--ease);
+        gap: 28px;
+        padding-bottom: 44px;
       }
-      .timeline-item.open .timeline-head,
-      .timeline-head:hover {
-        border-color: var(--aqua-soft);
-        box-shadow: 0 10px 28px rgba(14, 43, 44, 0.06);
+      .tl-item:last-child {
+        padding-bottom: 0;
       }
-      .timeline-head-text .num {
-        font-family: var(--ff-body);
-        font-size: 0.68rem;
-        letter-spacing: 0.2em;
-        color: var(--gold);
-        text-transform: uppercase;
-      }
-      .timeline-head-text h3 {
-        margin-top: 4px;
-        font-size: 1.05rem;
-      }
-      .timeline-toggle {
-        width: 30px;
-        height: 30px;
+      .tl-num {
+        flex: none;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
-        border: 1px solid var(--line);
+        border: 1px solid var(--gold);
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--teal-mid);
-        flex-shrink: 0;
-        transition: transform 0.3s var(--ease);
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: var(--gold-light);
+        background: var(--bg-deep);
+        z-index: 1;
       }
-      .timeline-item.open .timeline-toggle {
-        transform: rotate(45deg);
-        border-color: var(--gold);
-        color: var(--gold);
+      @media (max-width: 640px) {
+        .tl-num {
+          width: 40px;
+          height: 40px;
+          font-size: 0.9rem;
+        }
       }
-      .timeline-body {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows 0.4s var(--ease);
+      .tl-body {
+        padding-top: 6px;
       }
-      .timeline-body-inner {
-        overflow: hidden;
+      .tl-body .tag {
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--violet-light);
       }
-      .timeline-item.open .timeline-body {
-        grid-template-rows: 1fr;
+      .tl-body h3 {
+        font-size: 1.25rem;
+        margin: 8px 0 8px;
       }
-      .timeline-body p {
-        padding: 20px 24px 26px;
-        font-size: 0.92rem;
-        margin-top: -4px;
-        background: var(--aqua-wash);
-        border-inline: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
+      .tl-body p {
+        color: var(--cream-dim);
+        font-size: 0.95rem;
+        margin: 0;
       }
 
-      /* ============================================================
-       SOBRE O MENTOR
-    ============================================================ */
-      #mentor {
-        background: var(--teal-deep);
-        color: var(--white);
-      }
-      .mentor-grid {
+      /* ---------- formato / detalhes ---------- */
+      .detail-grid {
         display: grid;
-        grid-template-columns: 0.85fr 1.15fr;
-        gap: 60px;
-        align-items: center;
-        margin-top: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: rgba(201, 162, 75, 0.14);
+        border: 1px solid rgba(201, 162, 75, 0.14);
       }
-      @media (max-width: 820px) {
-        .mentor-grid {
+      @media (max-width: 900px) {
+        .detail-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .detail-card {
+        background: var(--bg-panel);
+        padding: 32px 24px;
+        text-align: center;
+      }
+      .detail-card .icon {
+        width: 38px;
+        height: 38px;
+        margin: 0 auto 16px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-light);
+        font-size: 1rem;
+      }
+      .detail-card h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .detail-card p {
+        font-size: 0.85rem;
+        color: var(--cream-dim);
+        margin: 0;
+      }
+
+      .bonus-box {
+        margin-top: 64px;
+        display: flex;
+        gap: 28px;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          rgba(122, 99, 168, 0.14),
+          rgba(201, 162, 75, 0.08)
+        );
+        border: 1px solid rgba(201, 162, 75, 0.25);
+        padding: 32px;
+        border-radius: 2px;
+        flex-wrap: wrap;
+      }
+      .bonus-box .bonus-icon {
+        flex: none;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: var(--bg-deep);
+        border: 1px solid var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-light);
+        font-size: 1.4rem;
+      }
+      .bonus-box h4 {
+        font-size: 1.15rem;
+        margin-bottom: 6px;
+      }
+      .bonus-box p {
+        color: var(--cream-dim);
+        margin: 0;
+        font-size: 0.92rem;
+      }
+
+      /* ---------- prova social ---------- */
+      .stat-strip {
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        flex-wrap: wrap;
+        margin-bottom: 70px;
+        text-align: center;
+      }
+      .stat-strip .num {
+        font-family: "Playfair Display", serif;
+        font-size: 2.6rem;
+        color: var(--gold-light);
+        display: block;
+      }
+      .stat-strip .lbl {
+        font-size: 0.78rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--cream-dim);
+      }
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      @media (max-width: 900px) {
+        .testi-grid {
           grid-template-columns: 1fr;
         }
       }
-      .mentor-visual {
-        position: relative;
-        aspect-ratio: 1 / 1;
-        max-width: 340px;
-        margin-inline: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .mentor-visual img {
-        width: 800px;
-        height: 600px;
-      }
-      .mentor-name {
-        font-family: var(--ff-display);
-        font-size: clamp(1.6rem, 3vw, 2.1rem);
-        color: var(--white);
-        margin-bottom: 6px;
-      }
-      .mentor-role {
-        font-size: 0.7rem;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        color: var(--gold-bright);
-        margin-bottom: 22px;
-      }
-      #mentor p {
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 0.98rem;
-      }
-      #mentor p + p {
-        margin-top: 14px;
-      }
-      .mentor-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-top: 26px;
-        font-size: 0.7rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--gold-bright);
-        border: 1px solid rgba(212, 175, 55, 0.4);
-        padding: 8px 18px;
-        border-radius: 40px;
-      }
 
-      /* ============================================================
-       PROVA SOCIAL
-    ============================================================ */
-      /* Grade de depoimentos */
-      .depo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-        margin-top: 56px;
-        text-align: left;
-      }
-
-      /* Card individual */
-      .depo-card {
-        background: var(--white);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(14, 43, 44, 0.04);
-        transition:
-          transform 0.3s var(--ease),
-          box-shadow 0.3s var(--ease),
-          border-color 0.3s var(--ease);
+      .testi-card {
+        background: var(--bg-panel);
+        border: 1px solid rgba(201, 162, 75, 0.16);
+        border-radius: 2px;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
       }
-      .depo-card:hover {
+
+      .testi-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 16px 32px rgba(14, 43, 44, 0.08);
-        border-color: var(--gold);
+        border-color: var(--gold-light);
       }
 
-      /* Container para imagens e vídeos */
-      .depo-media {
-        width: 100%;
-        border-bottom: 1px solid var(--line);
-        background: var(--aqua-wash);
+      .testi-content {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex-grow: 1;
       }
-      .depo-media img {
+
+      .testi-media {
         width: 100%;
-        height: auto;
-        display: block;
+        border-bottom: 1px solid rgba(201, 162, 75, 0.16);
+      }
+      .testi-media img {
+        width: 100%;
+        height: 220px;
         object-fit: cover;
-        max-height: 220px;
+        display: block;
       }
 
-      /* Wrapper responsivo para iframe de vídeo (mantém a proporção 16:9) */
       .video-wrapper {
         position: relative;
-        padding-bottom: 56.25%; /* Proporção 16:9 */
+        padding-bottom: 56.25%;
         height: 0;
         overflow: hidden;
+        border-bottom: 1px solid rgba(201, 162, 75, 0.16);
       }
       .video-wrapper iframe,
       .video-wrapper video {
@@ -655,215 +726,186 @@
         width: 100%;
         height: 100%;
       }
-
-      /* Textos do depoimento */
-      .depo-content {
-        padding: 24px;
-        flex-grow: 1; /* Faz o card empurrar o autor lá pra baixo se o texto for curto */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      .testi-card .stars {
+        color: var(--gold-light);
+        font-size: 0.9rem;
+        letter-spacing: 2px;
       }
-      .depo-text {
-        font-family: var(--ff-display);
+      .testi-card p.quote {
+        font-size: 0.94rem;
+        color: var(--cream-dim);
         font-style: italic;
-        font-size: 1rem;
-        color: var(--ink-soft);
-        margin-bottom: 20px;
-        line-height: 1.5;
+        flex-grow: 1;
       }
-
-      /* Assinatura do autor */
-      .depo-author {
-        font-family: var(--ff-body);
-        font-size: 0.8rem;
-        color: var(--teal-mid);
-        border-top: 1px solid var(--line);
-        padding-top: 14px;
-        margin-top: auto; /* Joga a assinatura pro fim do card */
-      }
-      .depo-author strong {
-        color: var(--teal-deep);
-        font-weight: 500;
-      }
-
-      #prova {
-        background: var(--aqua-wash);
-        text-align: center;
-      }
-      .prova-number {
-        font-family: var(--ff-display);
-        font-size: clamp(3rem, 8vw, 5.2rem);
-        color: var(--teal-deep);
-        line-height: 1;
-      }
-      .prova-number span {
-        color: var(--gold);
-      }
-      .prova-label {
-        margin-top: 10px;
-        font-size: 0.78rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--ink-faint);
-      }
-      .prova-note {
-        max-width: 560px;
-        margin: 40px auto 0;
-        font-style: italic;
-        font-family: var(--ff-display);
-        font-size: 1.15rem;
-        color: var(--teal-deep);
-      }
-      .depo-empty {
-        max-width: 640px;
-        margin: 48px auto 0;
-        padding: 40px;
-        border: 1px dashed var(--aqua-soft);
-        background: var(--white);
-      }
-      .depo-empty p {
-        font-family: var(--ff-display);
-        font-style: italic;
-        color: var(--ink-faint);
-      }
-
-      /* ============================================================
-       OFERTA
-    ============================================================ */
-      #oferta {
-        background: linear-gradient(160deg, var(--teal-deep) 0%, #0a2f30 100%);
-        color: var(--white);
-        text-align: center;
-      }
-      #oferta .eyebrow {
-        color: var(--gold-bright);
-      }
-      #oferta .eyebrow::before,
-      #oferta .eyebrow::after {
-        background: var(--gold-bright);
-      }
-      #oferta h2 {
-        color: var(--white);
-        max-width: 640px;
-        margin-inline: auto;
-      }
-      #oferta > .container > p.lead {
-        max-width: 560px;
-        margin: 18px auto 48px;
-        color: rgba(255, 255, 255, 0.72);
-      }
-      .oferta-card {
-        max-width: 640px;
-        margin-inline: auto;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        padding: clamp(30px, 5vw, 52px);
-      }
-      .oferta-list {
-        list-style: none;
-        text-align: left;
+      .testi-person {
         display: flex;
-        flex-direction: column;
-        gap: 14px;
-        margin-bottom: 36px;
-      }
-      .oferta-list li {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.85);
-      }
-      .oferta-list li::before {
-        content: "✦";
-        color: var(--gold-bright);
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-      .oferta-note {
-        margin-top: 22px;
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
-        color: rgba(255, 255, 255, 0.45);
-      }
-
-      /* ============================================================
-       FAQ
-    ============================================================ */
-      #faq {
-        background: var(--cream);
-      }
-      .faq-list {
-        max-width: 760px;
-        margin: 48px auto 0;
-        border-top: 1px solid var(--line);
-      }
-      .faq-item {
-        border-bottom: 1px solid var(--line);
-      }
-      .faq-q {
-        width: 100%;
-        background: none;
-        border: none;
-        text-align: left;
-        padding: 22px 4px;
-        display: flex;
-        justify-content: space-between;
         align-items: center;
-        gap: 16px;
-        cursor: pointer;
-        font-family: var(--ff-display);
-        font-size: 1.02rem;
-        color: var(--teal-deep);
+        gap: 12px;
       }
-      .faq-q .plus {
-        flex-shrink: 0;
-        width: 22px;
-        height: 22px;
+      .testi-avatar {
+        width: 46px;
+        height: 46px;
         border-radius: 50%;
-        border: 1px solid var(--gold);
-        color: var(--gold);
+        background: var(--bg-panel-2);
+        border: 1px solid rgba(201, 162, 75, 0.3);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1rem;
-        transition: transform 0.3s var(--ease);
+        font-size: 0.68rem;
+        color: var(--cream-dim);
+        flex: none;
       }
-      .faq-item.active .plus {
-        transform: rotate(45deg);
+      .testi-name {
+        font-size: 0.88rem;
+        color: var(--white-soft);
+        font-weight: 700;
       }
-      .faq-a {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s var(--ease);
-      }
-      .faq-a.open {
-        max-height: 300px;
-      }
-      .faq-a p {
-        padding: 0 4px 22px;
-        font-size: 0.92rem;
+      .testi-role {
+        font-size: 0.76rem;
+        color: var(--cream-dim);
       }
 
-      /* ============================================================
-       CTA FINAL
-    ============================================================ */
-      #cta-final {
-        background: var(--white);
+      /* ---------- lightbox/modal ---------- */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(7, 20, 24, 0.9);
+        backdrop-filter: blur(6px);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal.show {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 90vh;
+        border-radius: 4px;
+        border: 1px solid var(--gold);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 25px;
+        right: 35px;
+        color: var(--cream);
+        font-size: 45px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .close-modal:hover {
+        color: var(--gold-light);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .testi-media img {
+        cursor: zoom-in;
+      }
+
+      /* ---------- oferta final ---------- */
+      .offer-band {
+        background:
+          radial-gradient(
+            ellipse at 30% 30%,
+            rgba(122, 99, 168, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 80% 70%,
+            rgba(201, 162, 75, 0.1),
+            transparent 50%
+          ),
+          var(--bg-panel);
+        border-top: 1px solid rgba(201, 162, 75, 0.16);
         text-align: center;
       }
-      #cta-final .divider {
-        margin-bottom: 30px;
+      .offer-band h2 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        max-width: 760px;
+        margin: 16px auto 20px;
       }
-      #cta-final p.lead {
-        max-width: 500px;
-        margin: 16px auto 40px;
+      .offer-band p.lead {
+        color: var(--cream-dim);
+        max-width: 600px;
+        margin: 0 auto 36px;
+      }
+      .offer-list {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 12px;
+        text-align: left;
+        margin: 0 auto 40px;
+      }
+      .offer-list li {
+        list-style: none;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: var(--cream);
+        font-size: 0.95rem;
+      }
+      .offer-list li .chk {
+        color: var(--gold-light);
+        flex: none;
       }
 
-      /* ============================================================
-       FOOTER — estrutura idêntica à referência, paleta nova
-    ============================================================ */
+      /* ---------- faq ---------- */
+      .faq-item {
+        border-bottom: 1px solid rgba(201, 162, 75, 0.16);
+      }
+      .faq-item summary {
+        cursor: pointer;
+        padding: 22px 4px;
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        color: var(--white-soft);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+      }
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-item summary::after {
+        content: "+";
+        color: var(--gold-light);
+        font-size: 1.3rem;
+        transition: transform 0.3s ease;
+      }
+      .faq-item[open] summary::after {
+        transform: rotate(45deg);
+      }
+      .faq-item .faq-a {
+        padding: 0 4px 24px;
+        color: var(--cream-dim);
+        font-size: 0.94rem;
+        max-width: 680px;
+      }
+
+      /* ---------- footer ---------- */
       footer {
         position: relative;
         z-index: 1;
@@ -874,7 +916,7 @@
         align-items: center;
         gap: 4px;
         text-align: center;
-        background: var(--white);
+        background: var(--bg-panel);
       }
       footer .footer-logo {
         width: 56px;
@@ -884,22 +926,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--teal-deep);
+        background: var(--bg-panel);
       }
       footer .footer-logo img {
-        width: 80px;
-        height: 80px;
+        width: 110px;
+        height: 110px;
       }
       footer p {
-        font-size: 1rem;
-        color: var(--ink-faint);
+        font-size: 0.85rem;
+        color: var(--cream-dim);
         margin: 0;
       }
       footer p.suporte {
-        font-size: 1.4rem;
+        font-size: 1rem;
         font-weight: 300;
         letter-spacing: 0.08em;
-        color: var(--ink-soft);
+        color: var(--cream-dim);
       }
       footer a {
         color: var(--gold);
@@ -908,459 +950,370 @@
       footer a:hover {
         text-decoration: underline;
       }
-
-      /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-      @media (max-width: 640px) {
-        .timeline {
-          padding-left: 30px;
-        }
-        .timeline-item::before {
-          left: -30px;
-        }
-        .bonus-strip {
-          flex-direction: column;
-          align-items: flex-start;
+      /* reveal on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
         }
       }
     </style>
   </head>
   <body>
-    <!-- ============================================================
-     HERO
-============================================================ -->
-    <section id="hero">
-      <div class="container">
-        <img src="/fotos/logo.jpeg" alt="O DNA dos Espaços" class="reveal" />
-        <div class="hero-badge reveal">Mentoria Individual · 3 Meses</div>
-
-        <h1 class="reveal" style="transition-delay: 0.1s">
-          O DNA dos Espaços
-          <span class="veil">Apometria de Ambientes com Flávio Rodrigues</span>
-        </h1>
-
-        <p class="hero-sub reveal" style="transition-delay: 0.2s">
-          Todo espaço guarda uma memória, uma vibração, um código invisível que
-          influencia quem vive nele. Aprenda a lê-lo, higienizá-lo e
-          reprogramá-lo — com técnica, ética e profundidade.
-        </p>
-
-        <div class="hero-ctas reveal" style="transition-delay: 0.3s">
-          <a href="#oferta" class="btn btn-primary"
-            >Quero Minha Vaga na Mentoria</a
-          >
-          <a href="#modulos" class="btn btn-outline">Ver o Programa</a>
-        </div>
-
-        <div class="hero-stats reveal" style="transition-delay: 0.4s">
-          <div class="hero-stat">
-            <strong>+100</strong>
-            <span>Atendimentos em 4 meses</span>
-          </div>
-          <div class="hero-stat">
-            <strong>6</strong>
-            <span>Encontros Quinzenais</span>
-          </div>
-          <div class="hero-stat">
-            <strong>1:1</strong>
-            <span>Mentoria Individual</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-     PROBLEMA
-============================================================ -->
-    <section id="problema">
-      <div class="container">
-        <span class="eyebrow">O Ponto Cego</span>
-        <h2 class="text-center reveal">
-          Você sente que falta o último passo entre saber e atuar?
-        </h2>
-        <p
-          class="text-center reveal"
-          style="max-width: 620px; margin-inline: auto"
+    <header>
+      <div class="nav-wrap">
+        <a href="#topo" class="brand"
+          >Mentoria Apometria de Ambientes: <br />
+          DNA <span>dos Espaços</span></a
         >
-          Muita gente que se aproxima da Apometria de Ambientes esbarra sempre
-          no mesmo lugar — não é falta de teoria, é falta de estrutura para
-          transformar percepção em atuação segura.
-        </p>
+        <ul class="nav-links">
+          <li><a href="#sobre">O Mentor</a></li>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="#formato">Formato</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+        </ul>
+        <a href="#oferta" class="nav-cta">Quero minha vaga</a>
+        <button class="burger" id="burgerBtn" aria-label="Abrir menu">
+          ☰
+        </button>
+      </div>
+      <div id="mobileMenu">
+        <a href="#sobre">O Mentor</a>
+        <a href="#programa">Programa</a>
+        <a href="#formato">Formato</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#oferta">Quero minha vaga</a>
+      </div>
+    </header>
 
-        <div class="dor-grid">
-          <div class="dor-card reveal">
-            <h4>O lar como espelho</h4>
-            <p>
-              Você percebe que ambientes carregam energias, mas não sabe como
-              higienizá-los de forma consistente e segura.
-            </p>
-          </div>
-          <div class="dor-card reveal" style="transition-delay: 0.08s">
-            <h4>Teoria sem prática</h4>
-            <p>
-              Já estudou apometria de ambientes, mas trava na hora de atuar de
-              verdade — falta protocolo, falta confiança.
-            </p>
-          </div>
-          <div class="dor-card reveal" style="transition-delay: 0.16s">
-            <h4>Vontade de profissionalizar</h4>
-            <p>
-              Sente o chamado para atender outras pessoas e espaços, mas não
-              sabe como estruturar isso como atuação séria.
-            </p>
+    <!-- HERO -->
+    <section class="hero" id="topo">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Mentoria Individual · 3 Meses</span>
+          <h1>
+            Todo ambiente tem uma <em>memória</em>. Aprenda a lê-la, tratá-la e
+            transformá-la.
+          </h1>
+          <p class="lead">
+            Uma mentoria prática e individual para terapeutas e estudantes de
+            espiritualidade que já conhecem a apometria de ambientes, mas ainda
+            travam na hora de atuar com segurança, ética e profundidade.
+          </p>
+          <div class="hero-actions">
+            <a href="#oferta" class="btn-primary"
+              >Quero atuar com apometria de ambientes</a
+            >
+            <a href="#programa" class="btn-ghost">Ver o programa completo</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-     TRANSFORMAÇÃO
-============================================================ -->
-    <section id="transformacao">
-      <div class="container-narrow text-center">
-        <span class="eyebrow">A Virada</span>
-        <h2 class="reveal">O que muda quando você domina o DNA dos espaços</h2>
-        <p class="reveal" style="margin-top: 18px">
-          A Mentoria integra teoria e prática até o ponto em que a percepção
-          multidimensional deixa de ser abstrata e se torna ferramenta de
-          trabalho — em lares, consultórios, empresas e instituições.
-        </p>
-        <p class="transf-quote reveal" style="transition-delay: 0.1s">
-          "Não se trata de sentir energia.
-          <span
-            >Trata-se de saber exatamente o que fazer com o que você
-            sente.</span
-          >"
-        </p>
-      </div>
-    </section>
+    <div class="container"><div class="rule"></div></div>
 
-    <!-- ============================================================
-     ESTRUTURA DA MENTORIA
-============================================================ -->
-    <section id="estrutura">
+    <!-- DORES -->
+    <section id="dores">
       <div class="container">
-        <span class="eyebrow">A Mentoria</span>
-        <h2 class="text-center reveal">Estrutura Completa de Formação</h2>
-        <p
-          class="text-center reveal"
-          style="max-width: 580px; margin-inline: auto"
-        >
-          Um processo individual, guiado por Flávio Rodrigues, para levar você
-          da percepção inicial até a atuação profissional segura.
-        </p>
-
-        <div class="estrutura-grid">
-          <div class="estrutura-card reveal">
-            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
-              <circle
-                cx="24"
-                cy="24"
-                r="18"
-                stroke="#135C5F"
-                stroke-width="1.4"
-              />
-              <circle cx="24" cy="24" r="4" fill="#B8912E" />
-            </svg>
-            <h4>Mentoria Individual</h4>
-            <p>Atenção 1:1, respeitando seu ritmo e seu contexto de atuação.</p>
-          </div>
-          <div class="estrutura-card reveal" style="transition-delay: 0.06s">
-            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
-              <rect
-                x="10"
-                y="10"
-                width="28"
-                height="28"
-                rx="2"
-                stroke="#135C5F"
-                stroke-width="1.4"
-              />
-              <path
-                d="M16 24H32M24 16V32"
-                stroke="#B8912E"
-                stroke-width="1.4"
-              />
-            </svg>
-            <h4>6 Encontros Quinzenais</h4>
+        <div class="sec-head reveal">
+          <span class="eyebrow">Isso soa familiar?</span>
+          <h2>Você entende a teoria. O que falta é segurança para atuar.</h2>
+          <p>
+            A apometria de ambientes exige mais do que sensibilidade, exige
+            método, protocolo e prática supervisionada. É exatamente aí que a
+            maioria trava.
+          </p>
+        </div>
+        <div class="pain-grid reveal">
+          <div class="pain-card">
+            <span class="tag">Para terapeutas</span>
+            <h3>
+              Você já conhece a apometria, mas hesita diante do primeiro
+              atendimento real
+            </h3>
             <p>
-              3 meses de imersão progressiva, com tempo para integrar cada
-              etapa.
+              Sabe os conceitos, sente o campo, mas falta um protocolo claro
+              para diagnosticar, limpar e harmonizar um ambiente do início ao
+              fim, com confiança para cobrar por isso.
             </p>
           </div>
-          <div class="estrutura-card reveal" style="transition-delay: 0.12s">
-            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
-              <path
-                d="M24 8L38 16V32L24 40L10 32V16L24 8Z"
-                stroke="#135C5F"
-                stroke-width="1.4"
-              />
-            </svg>
-            <h4>Foco na Atuação Real</h4>
+          <div class="pain-card">
+            <span class="tag">Para estudantes</span>
+            <h3>
+              Você quer começar a atuar, mas não sabe por onde nem com quem
+            </h3>
             <p>
-              Diagnóstico, limpeza, harmonização e supervisão de casos práticos.
-            </p>
-          </div>
-          <div class="estrutura-card reveal" style="transition-delay: 0.18s">
-            <svg class="estrutura-icon" viewBox="0 0 48 48" fill="none">
-              <circle
-                cx="24"
-                cy="24"
-                r="14"
-                stroke="#135C5F"
-                stroke-width="1.4"
-              />
-              <path
-                d="M24 17V24L29 29"
-                stroke="#B8912E"
-                stroke-width="1.4"
-                stroke-linecap="round"
-              />
-            </svg>
-            <h4>Ética & Segurança</h4>
-            <p>
-              Limites de atuação claros para trabalhar com responsabilidade.
+              Falta uma estrutura de aprendizado guiada, com supervisão de casos
+              reais, para transformar o interesse por espiritualidade em atuação
+              profissional segura.
             </p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="bonus-strip reveal">
+    <!-- TRANSFORMAÇÃO -->
+    <section class="transform-band">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow">A transformação</span>
+        </div>
+        <p class="transform-quote reveal">
+          Ao final da mentoria, você une
+          <span class="accent">teoria e prática</span> em um só corpo de
+          conhecimento, capaz de perceber camadas multidimensionais de um espaço
+          e agir sobre elas com
+          <span class="accent">segurança, ética e precisão</span>, em ambientes
+          residenciais, terapêuticos, comerciais e institucionais.
+        </p>
+      </div>
+    </section>
+
+    <!-- MENTOR -->
+    <section id="sobre">
+      <div class="container mentor-wrap">
+        <div class="mentor-photo reveal">
+          <img src="/fotos/flavio.jpg" alt="" />
+        </div>
+        <div class="mentor-text reveal">
+          <span class="eyebrow">Quem conduz a mentoria</span>
+          <h2>Flávio Rodrigues</h2>
+          <p>
+            Desde cedo, Flávio cultivou uma curiosidade insaciável pelo mundo
+            visível e invisível. Como <strong>biólogo e professor</strong>,
+            mergulhou na ciência e percebeu que matéria e espírito são faces da
+            mesma totalidade.
+          </p>
+          <p>
+            Ao longo de sua trajetória, navegou por diversas culturas e
+            religiões, desenvolvendo uma espiritualidade autêntica, livre de
+            dogmas. Hoje integra seu repertório científico, cultural e
+            espiritual para atuar como um
+            <strong>"cirurgião de consciências"</strong>, guiando almas e
+            espaços com precisão, sensibilidade e rigor de conhecimento.
+          </p>
+          <p>
+            É esse cruzamento entre ciência e espiritualidade que dá à mentoria
+            seu método: nada de atalhos místicos, e sim um protocolo testado,
+            ético e replicável.
+          </p>
+          <div class="mentor-stats">
+            <div>
+              <span class="num">100+</span>
+              <span class="lbl">Atendimentos em 4 meses</span>
+            </div>
+            <div>
+              <span class="num">6</span>
+              <span class="lbl">Encontros quinzenais</span>
+            </div>
+            <div>
+              <span class="num">1:1</span>
+              <span class="lbl">Mentoria individual</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="rule"></div></div>
+
+    <!-- PROGRAMA -->
+    <section id="programa">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow">O caminho, encontro a encontro</span>
+          <h2>6 encontros para ir do conceito ao atendimento completo</h2>
+          <p>
+            Uma sequência progressiva, cada encontro quinzenal constrói sobre o
+            anterior, até você conduzir um atendimento ambiental do início ao
+            fim.
+          </p>
+        </div>
+        <div class="timeline reveal">
+          <div class="tl-item">
+            <div class="tl-num">01</div>
+            <div class="tl-body">
+              <span class="tag">Fundamentos</span>
+              <h3>Fundamentos da Apometria Multidimensional de Ambientes</h3>
+              <p>
+                O ambiente como organismo vivo, estrutura multidimensional dos
+                espaços, ética de atuação e desenvolvimento da percepção
+                inicial.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">02</div>
+            <div class="tl-body">
+              <span class="tag">Diagnóstico</span>
+              <h3>Leitura e Diagnóstico</h3>
+              <p>
+                Identificação de interferências, formas-pensamento e miasmas,
+                com prática guiada de diagnóstico energético.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">03</div>
+            <div class="tl-body">
+              <span class="tag">Limpeza</span>
+              <h3>Limpeza e Desacoplamento Energético</h3>
+              <p>
+                Purificação de campos, desvinculação de padrões recorrentes e
+                assistência multidimensional.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">04</div>
+            <div class="tl-body">
+              <span class="tag">Harmonização</span>
+              <h3>Harmonização e Reprogramação Vibracional</h3>
+              <p>
+                Requalificação de campos, implantação de novos referenciais,
+                campos de proteção e selamentos.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">05</div>
+            <div class="tl-body">
+              <span class="tag">Prática</span>
+              <h3>Aplicações Práticas</h3>
+              <p>
+                Ambientes residenciais, terapêuticos, empresariais e
+                institucionais, dinâmicas e estudos de caso reais.
+              </p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">06</div>
+            <div class="tl-body">
+              <span class="tag">Integração</span>
+              <h3>Integração e Supervisão de Casos</h3>
+              <p>
+                Construção de protocolos de atendimento, limites de atuação e
+                vivência prática final de um atendimento ambiental completo.
+              </p>
+            </div>
+          </div>
           <div>
-            <span class="tag">Bônus Incluso</span>
-            <h4>Curso gravado com toda a metodologia</h4>
-            <p>
-              Acesso vitalício na plataforma Kiwify, para revisitar cada etapa
-              sempre que precisar.
-            </p>
-          </div>
-          <a href="#oferta" class="btn btn-primary">Garantir Minha Vaga</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-     MÓDULOS — 6 ENCONTROS
-============================================================ -->
-    <section id="modulos">
-      <div class="container-narrow">
-        <span class="eyebrow">O Percurso</span>
-        <h2 class="text-center reveal">Os 6 Encontros da Jornada</h2>
-        <p
-          class="text-center reveal"
-          style="max-width: 560px; margin-inline: auto"
-        >
-          Clique em cada encontro para conhecer o que será trabalhado.
-        </p>
-
-        <div class="timeline">
-          <div class="timeline-item reveal" data-encontro>
-            <div class="timeline-head">
-              <div class="timeline-head-text">
-                <span class="num">Encontro 1</span>
-                <h3>Fundamentos da Apometria Multidimensional de Ambientes</h3>
-              </div>
-              <div class="timeline-toggle">+</div>
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-body-inner">
-                <p>
-                  O ambiente como organismo vivo, sua estrutura
-                  multidimensional, princípios éticos de atuação e
-                  desenvolvimento da percepção inicial.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item reveal"
-            data-encontro
-            style="transition-delay: 0.05s"
-          >
-            <div class="timeline-head">
-              <div class="timeline-head-text">
-                <span class="num">Encontro 2</span>
-                <h3>Leitura e Diagnóstico</h3>
-              </div>
-              <div class="timeline-toggle">+</div>
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-body-inner">
-                <p>
-                  Identificação de interferências, formas-pensamento e miasmas
-                  energéticos, com prática guiada de diagnóstico do campo do
-                  ambiente.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item reveal"
-            data-encontro
-            style="transition-delay: 0.1s"
-          >
-            <div class="timeline-head">
-              <div class="timeline-head-text">
-                <span class="num">Encontro 3</span>
-                <h3>Limpeza e Desacoplamento Energético</h3>
-              </div>
-              <div class="timeline-toggle">+</div>
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-body-inner">
-                <p>
-                  Purificação de campos, desvinculação de padrões recorrentes e
-                  assistência multidimensional durante o processo de limpeza.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item reveal"
-            data-encontro
-            style="transition-delay: 0.15s"
-          >
-            <div class="timeline-head">
-              <div class="timeline-head-text">
-                <span class="num">Encontro 4</span>
-                <h3>Harmonização e Reprogramação Vibracional</h3>
-              </div>
-              <div class="timeline-toggle">+</div>
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-body-inner">
-                <p>
-                  Requalificação de campos, implantação de novos referenciais
-                  vibracionais e construção de campos de proteção e selamentos.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item reveal"
-            data-encontro
-            style="transition-delay: 0.2s"
-          >
-            <div class="timeline-head">
-              <div class="timeline-head-text">
-                <span class="num">Encontro 5</span>
-                <h3>Aplicações Práticas</h3>
-              </div>
-              <div class="timeline-toggle">+</div>
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-body-inner">
-                <p>
-                  Atuação em ambientes residenciais, terapêuticos, empresariais
-                  e institucionais, com dinâmicas e estudos de caso reais.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item reveal"
-            data-encontro
-            style="transition-delay: 0.25s"
-          >
-            <div class="timeline-head">
-              <div class="timeline-head-text">
-                <span class="num">Encontro 6</span>
-                <h3>Integração e Supervisão de Casos</h3>
-              </div>
-              <div class="timeline-toggle">+</div>
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-body-inner">
-                <p>
-                  Construção do seu protocolo próprio de atendimento, definição
-                  de limites de atuação e vivência prática de um atendimento
-                  ambiental completo.
-                </p>
-              </div>
-            </div>
+            <a href="#oferta" class="btn-primary programa"
+              >Quero fazer minha aplicação</a
+            >
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-     SOBRE O MENTOR
-============================================================ -->
-    <section id="mentor">
+    <div class="container"><div class="rule"></div></div>
+
+    <!-- FORMATO -->
+    <section id="formato">
       <div class="container">
-        <div class="mentor-grid">
-          <div class="mentor-visual reveal">
-            <img src="/fotos/flavio.jpg" alt="" />
+        <div class="sec-head reveal">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Estrutura pensada para profundidade real</h2>
+        </div>
+        <div class="detail-grid reveal">
+          <div class="detail-card">
+            <div class="icon">◐</div>
+            <h4>Duração</h4>
+            <p>3 meses de mentoria contínua</p>
           </div>
-          <div class="reveal" style="transition-delay: 0.1s">
-            <span class="eyebrow left">O Mentor</span>
-            <div class="mentor-name">Flávio Rodrigues</div>
-            <div class="mentor-role">
-              Biólogo · Professor · Facilitador Espiritual
-            </div>
+          <div class="detail-card">
+            <div class="icon">◆</div>
+            <h4>Formato</h4>
+            <p>Acompanhamento individual, 1:1</p>
+          </div>
+          <div class="detail-card">
+            <div class="icon">◒</div>
+            <h4>Carga horária</h4>
+            <p>6 encontros quinzenais com Flávio</p>
+          </div>
+          <div class="detail-card">
+            <div class="icon">✦</div>
+            <h4>Prova social</h4>
+            <p>Mais de 100 atendimentos em 4 meses</p>
+          </div>
+        </div>
+
+        <div class="bonus-box reveal">
+          <div class="bonus-icon">🎁</div>
+          <div>
+            <h4>Bônus incluso: Curso gravado completo</h4>
             <p>
-              Desde cedo, Flávio cultivou uma curiosidade insaciável pelo mundo
-              — tanto o visível quanto o invisível. Como biólogo e professor,
-              mergulhou na ciência com o mesmo fervor com que buscava
-              compreender os mistérios da existência humana, percebendo que
-              matéria e espírito não são opostos, mas faces de uma mesma
-              totalidade.
+              Toda a metodologia em vídeo-aulas, disponível na plataforma
+              Kiwify, para você rever quantas vezes precisar durante e depois da
+              mentoria.
             </p>
-            <p>
-              Essa inquietação o levou a navegar por diversas culturas,
-              religiões e tradições ao redor do mundo, absorvendo valores e
-              modos de viver que expandissem sua própria consciência. Dessa
-              jornada nasceu uma espiritualidade autêntica, livre de dogmas e
-              profundamente enraizada na experiência vivida.
-            </p>
-            <p>
-              Hoje, Flávio integra esse repertório científico, cultural e
-              espiritual para atuar como um cirurgião de consciências — e de
-              espaços — guiando com precisão e sensibilidade cada aluno que se
-              lança nessa jornada.
-            </p>
-            <div class="mentor-badge">✦ +100 Atendimentos Realizados</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-     PROVA SOCIAL
-============================================================ -->
-    <section id="prova">
-      <div class="container-narrow">
-        <span class="eyebrow">Resultados</span>
-        <div class="prova-number reveal">+100<span>.</span></div>
-        <div class="prova-label reveal">
-          Atendimentos realizados em apenas 4 meses
-        </div>
-        <p class="prova-note reveal">
-          "A demanda por defesa espiritual do lar é real — e crescente.
-          Formar-se com profundidade é a diferença entre sentir e efetivamente
-          atuar."
-        </p>
+    <div class="container"><div class="rule"></div></div>
 
-        <div class="depo-grid reveal" style="transition-delay: 0.2s">
-          <div class="depo-card">
-            <div class="depo-content">
-              <p class="depo-text">
+    <!-- RESULTADOS -->
+    <section id="resultados">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Resultados</span>
+          <h2>Quem já passou pela mentoria</h2>
+        </div>
+
+        <div class="stat-strip reveal">
+          <div>
+            <span class="num">100+</span>
+            <span class="lbl">Atendimentos realizados</span>
+          </div>
+          <div>
+            <span class="num">4</span>
+            <span class="lbl">Meses de atuação prática</span>
+          </div>
+          <div>
+            <span class="num">6</span>
+            <span class="lbl">Encontros de imersão guiada</span>
+          </div>
+        </div>
+
+        <div class="testi-grid reveal">
+          <div class="testi-card">
+            <div class="testi-media">
+              <img src="/fotos/depoimento_1.jpg" alt="Depoimento 1" />
+            </div>
+            <div class="testi-content">
+              <span class="stars">★★★★★★</span>
+              <p class="quote">
                 "Meu Imóvel estava a 9 meses vazio, consegui alugar após uma
-                semana do trabalho de vocês. Gratidão"
+                semana do trabalho de vocês. Gratidão."
               </p>
-              <p class="depo-author">
-                <strong>Angela Magudo</strong> · Corretora de Imóveis
-              </p>
+              <div class="testi-person">
+                <div class="testi-avatar">AM</div>
+                <div>
+                  <div class="testi-name">Angela Magudo</div>
+                  <div class="testi-role">Corretora</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="depo-card">
-            <div class="depo-media video-wrapper">
+          <div class="testi-card">
+            <div class="video-wrapper">
               <iframe
                 src="https://www.youtube.com/embed/zEAgtxUbbCc?si=ysUhZghLzNMOpncb"
                 title="YouTube video player"
@@ -1372,185 +1325,118 @@
                   encrypted-media;
                   gyroscope;
                   picture-in-picture;
-                  web-share;
                 "
                 allowfullscreen
               ></iframe>
             </div>
-            <div class="depo-content">
-              <p class="depo-text">
+            <div class="testi-content">
+              <span class="stars">★★★★★★</span>
+              <p class="quote">
                 "Me conectei muito mais com minha própria mediunidade."
               </p>
-              <p class="depo-author">
-                <strong>Marlene Dias</strong> · Terapeuta
-              </p>
+              <div class="testi-person">
+                <div class="testi-avatar">MD</div>
+                <div>
+                  <div class="testi-name">Marlene Dias</div>
+                  <div class="testi-role">Terapeuta</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-     OFERTA
-============================================================ -->
-    <section id="oferta">
+    <!-- OFERTA -->
+    <section class="offer-band" id="oferta">
       <div class="container">
-        <span class="eyebrow">Sua Vaga</span>
-        <h2>
-          Torne-se apto a ler, higienizar e reprogramar o DNA de qualquer espaço
-        </h2>
+        <span class="eyebrow">Vagas limitadas, turma individual</span>
+        <h2>Sua próxima etapa é atuar com o que você já sabe</h2>
         <p class="lead">
-          Uma jornada individual de 3 meses ao lado de Flávio Rodrigues, para
-          transformar percepção em atuação real, ética e segura.
+          Uma mentoria individual, com acompanhamento direto de Flávio
+          Rodrigues, para você transformar conhecimento em atuação profissional
+          segura e ética na apometria de ambientes.
         </p>
 
-        <div class="oferta-card">
-          <ul class="oferta-list">
-            <li>Mentoria 100% individual, com 6 encontros quinzenais</li>
-            <li>3 meses de acompanhamento direto com Flávio Rodrigues</li>
-            <li>
-              Percurso completo: fundamentos, diagnóstico, limpeza,
-              harmonização, prática e supervisão de casos
-            </li>
-            <li>
-              Bônus: curso gravado com toda a metodologia, acesso vitalício na
-              Kiwify
-            </li>
-            <li>
-              Construção do seu próprio protocolo de atendimento ao final da
-              jornada
-            </li>
-          </ul>
-          <a
-            href=""
-            class="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Quero fazer minha aplicação</a
-          >
-          <p class="oferta-note">
-            Vagas individuais limitadas · Atendimento por ordem de contato
-          </p>
+        <ul class="offer-list">
+          <li>
+            <span class="chk">✓</span> 6 encontros quinzenais individuais com
+            Flávio Rodrigues (3 meses)
+          </li>
+          <li>
+            <span class="chk">✓</span> Protocolo completo: leitura, limpeza,
+            harmonização e integração de casos
+          </li>
+          <li>
+            <span class="chk">✓</span> Supervisão prática de atendimentos
+            ambientais reais
+          </li>
+          <li>
+            <span class="chk">✓</span> Bônus: curso gravado com toda a
+            metodologia, na plataforma Kiwify
+          </li>
+        </ul>
+        <div>
+          <a href="#" class="btn-primary">Garantir minha vaga na mentoria</a>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-     FAQ
-============================================================ -->
+    <!-- FAQ -->
     <section id="faq">
-      <div class="container-narrow">
-        <span class="eyebrow">Dúvidas Frequentes</span>
-        <h2 class="text-center reveal">Antes de Começar</h2>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              <span>Preciso já ter formação em apometria para entrar?</span>
-              <span class="plus">+</span>
-            </button>
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Perguntas frequentes</span>
+          <h2>Dúvidas antes de começar</h2>
+        </div>
+        <div style="max-width: 760px; margin: 0 auto" class="reveal">
+          <details class="faq-item" open>
+            <summary>
+              Preciso já atender clientes para fazer a mentoria?
+            </summary>
             <div class="faq-a">
-              <p>
-                Não. A mentoria acolhe tanto estudantes de espiritualidade
-                quanto terapeutas que já conhecem apometria de ambientes, mas
-                travam na hora de atuar. O percurso é construído desde os
-                fundamentos.
-              </p>
+              Não. A mentoria recebe tanto terapeutas que já conhecem a
+              apometria de ambientes e querem destravar a atuação, quanto
+              estudantes de espiritualidade que desejam começar do zero com
+              segurança.
             </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              <span>Como funcionam os encontros?</span>
-              <span class="plus">+</span>
-            </button>
+          </details>
+          <details class="faq-item">
+            <summary>Como funcionam os encontros?</summary>
             <div class="faq-a">
-              <p>
-                São 6 encontros individuais quinzenais, ao longo de 3 meses,
-                conduzidos diretamente por Flávio Rodrigues, com foco em teoria
-                e prática guiada.
-              </p>
+              São 6 encontros individuais e quinzenais, ao longo de 3 meses,
+              conduzidos diretamente por Flávio Rodrigues, com espaço para
+              prática guiada e supervisão de casos.
             </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              <span>Vou sair apto para atender profissionalmente?</span>
-              <span class="plus">+</span>
-            </button>
+          </details>
+          <details class="faq-item">
+            <summary>O que está incluso além dos encontros?</summary>
             <div class="faq-a">
-              <p>
-                Sim. O Encontro 6 é dedicado à construção do seu protocolo de
-                atendimento e aos limites éticos de atuação, com vivência
-                prática de um atendimento ambiental completo.
-              </p>
+              Você recebe também o curso gravado com toda a metodologia,
+              disponível na plataforma Kiwify, para estudar no seu ritmo.
             </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              <span>O que é o bônus da plataforma Kiwify?</span>
-              <span class="plus">+</span>
-            </button>
+          </details>
+          <details class="faq-item">
+            <summary>A mentoria é individual mesmo?</summary>
             <div class="faq-a">
-              <p>
-                É um curso gravado com toda a metodologia trabalhada na
-                mentoria, para você revisitar sempre que precisar, com acesso
-                vitalício.
-              </p>
+              Sim. O acompanhamento é 1:1, feito sob medida para o seu momento
+              de atuação e para os ambientes com os quais você pretende
+              trabalhar.
             </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">
-              <span>Como tiro outras dúvidas antes de entrar?</span>
-              <span class="plus">+</span>
-            </button>
-            <div class="faq-a">
-              <p>
-                Fale diretamente pelo WhatsApp através do botão nesta página — a
-                equipe esclarece qualquer dúvida antes da sua decisão.
-              </p>
-            </div>
-          </div>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-     CTA FINAL
-============================================================ -->
-    <section id="cta-final">
-      <div class="container-narrow">
-        <div class="divider">
-          <div class="line"></div>
-          <div class="dot"></div>
-          <div class="line"></div>
-        </div>
-        <h2 class="reveal">
-          Todo espaço tem um DNA. <em>Aprenda a lê-lo.</em>
-        </h2>
-        <p class="lead reveal">
-          Se você sente o chamado para proteger e transformar ambientes, essa é
-          a jornada para transformar essa percepção em atuação real.
-        </p>
-        <a
-          href=""
-          class="btn btn-primary reveal"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Quero Minha Vaga na Mentoria</a
-        >
-      </div>
-    </section>
-
-    <!-- ============================================================
-     FOOTER
-============================================================ -->
+    <!-- FOOTER -->
     <footer>
       <div class="footer-logo">
-        <img src="/fotos/logo.jpeg" alt="" />
+        <img src="/fotos/logo.png" alt="" />
       </div>
       <p class="suporte">SUPORTE</p>
       <p style="margin-top: 0.1rem">
-        © 2026 Holos Terapeutas Integrativos · O DNA dos Espaços - Todos os
-        direitos reservados
+        © 2026 Holos Terapeutas Integrativos · Mentoria Apometria de Ambientes:
+        O DNA dos Espaços - Todos os direitos reservados
       </p>
       <p style="margin-top: 0.1rem">
         <a
@@ -1567,7 +1453,7 @@
           >Instagram</a
         >
       </p>
-      <p style="margin-top: 0.1rem; font-size: 1rem">
+      <p style="margin-top: 0.1rem; font-size: 0.75rem">
         Arquitetura e design desta página por
         <a
           href="https://levymelo.netlify.app"
@@ -1578,51 +1464,55 @@
       </p>
     </footer>
 
-    <!-- ============================================================
-     JAVASCRIPT
-============================================================ -->
+    <div id="imageModal" class="modal">
+      <span class="close-modal">&times;</span>
+      <img class="modal-content" id="imgExpanded" />
+    </div>
     <script>
-      /* reveal on scroll */
-      const revealObserver = new IntersectionObserver(
+      const burger = document.getElementById("burgerBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      burger.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+      mobileMenu.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => mobileMenu.classList.remove("open"));
+      });
+
+      const revealEls = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
         (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add("visible");
-              revealObserver.unobserve(e.target);
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              io.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.12 },
+        { threshold: 0.15 },
       );
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => revealObserver.observe(el));
+      revealEls.forEach((el) => io.observe(el));
 
-      /* timeline accordion (encontros) */
-      document.querySelectorAll("[data-encontro]").forEach((item) => {
-        item.querySelector(".timeline-head").addEventListener("click", () => {
-          const isOpen = item.classList.contains("open");
-          document
-            .querySelectorAll("[data-encontro]")
-            .forEach((i) => i.classList.remove("open"));
-          if (!isOpen) item.classList.add("open");
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("imgExpanded");
+      const closeBtn = document.querySelector(".close-modal");
+      const clickableImages = document.querySelectorAll(".testi-media img");
+
+      clickableImages.forEach((img) => {
+        img.addEventListener("click", function () {
+          modal.classList.add("show");
+          modalImg.src = this.src;
         });
       });
 
-      /* FAQ accordion */
-      function toggleFaq(btn) {
-        const item = btn.parentElement;
-        const answer = item.querySelector(".faq-a");
-        const isOpen = item.classList.contains("active");
-        document.querySelectorAll(".faq-item").forEach((i) => {
-          i.classList.remove("active");
-          i.querySelector(".faq-a").classList.remove("open");
-        });
-        if (!isOpen) {
-          item.classList.add("active");
-          answer.classList.add("open");
+      closeBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("show");
         }
-      }
+      });
     </script>
   </body>
 </html>
