@@ -28,8 +28,8 @@
         --gold-light: #e7cd8b;
         --cream: #efe6d3;
         --cream-dim: #c9bfa9;
-        --violet: #7a63a8;
-        --violet-light: #9c87c4;
+        --violet: #6648a1;
+        --violet-light: #ad84f8;
         --white-soft: #f7f3e9;
       }
 
@@ -252,37 +252,38 @@
           var(--bg-deep);
       }
       .hero-grid {
-        display: flex;
+        display: grid; /* Tava flex, agora é grid de verdade! */
         grid-template-columns: 1.1fr 0.9fr;
         gap: 60px;
         align-items: center;
-        text-align: center;
+        text-align: left; /* Fica alinhado à esquerda no PC */
       }
+
       @media (max-width: 900px) {
         .hero-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr; /* No celular, uma coisa embaixo da outra */
           gap: 48px;
-          text-align: center;
+          text-align: center; /* Volta a ficar centralizado no celular */
         }
       }
+
+      /* Faz o texto herdar o alinhamento correto dependendo da tela */
       .hero h1 {
         font-size: clamp(2.4rem, 5vw, 3.6rem);
         line-height: 1.12;
         margin: 18px 0 22px;
-        text-align: center;
-        align-items: center;
+        text-align: inherit;
       }
       .hero h1 em {
         font-style: italic;
         color: var(--gold-light);
       }
+
       .hero p.lead {
         font-size: 1.08rem;
         color: var(--cream-dim);
-
         margin-bottom: 34px;
-        text-align: center;
-        align-items: center;
+        text-align: inherit;
       }
       .btn-primary {
         display: inline-flex;
@@ -332,15 +333,31 @@
         color: var(--gold-light);
       }
       .hero-actions {
+        display: flex;
         gap: 16px;
         flex-wrap: wrap;
+        justify-content: flex-start; /* Alinha à esquerda no PC */
+      }
+      @media (max-width: 900px) {
+        .hero-actions {
+          justify-content: center; /* Centraliza no celular */
+        }
       }
 
-      /* signature: concentric field rings around floorplan mark */
-      .hero-logo {
+      .hero-photo {
+        position: relative;
         width: 100%;
+        max-width: 500px; /* Controla o tamanho máximo da foto */
+        margin-inline: auto;
       }
 
+      .hero-photo img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        border: 1px solid rgba(201, 162, 75, 0.35); /* Bordinha dourada chique */
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); /* Sombra pra dar profundidade */
+      }
       /* ---------- section headers ---------- */
       .sec-head {
         max-width: 640px;
@@ -606,10 +623,11 @@
       }
 
       .bonus-box {
-        margin-top: 64px;
+        margin-top: 14px;
         display: flex;
         gap: 28px;
         align-items: center;
+        justify-content: center;
         background: linear-gradient(
           135deg,
           rgba(122, 99, 168, 0.14),
@@ -640,7 +658,7 @@
       .bonus-box p {
         color: var(--cream-dim);
         margin: 0;
-        font-size: 0.92rem;
+        font-size: 1.1rem;
       }
 
       /* ---------- prova social ---------- */
@@ -826,18 +844,7 @@
 
       /* ---------- oferta final ---------- */
       .offer-band {
-        background:
-          radial-gradient(
-            ellipse at 30% 30%,
-            rgba(122, 99, 168, 0.16),
-            transparent 55%
-          ),
-          radial-gradient(
-            ellipse at 80% 70%,
-            rgba(201, 162, 75, 0.1),
-            transparent 50%
-          ),
-          var(--bg-panel);
+        background: linear-gradient(135deg, var(--bg-panel-2), var(--bg-panel));
         border-top: 1px solid rgba(201, 162, 75, 0.16);
         text-align: center;
       }
@@ -1003,7 +1010,7 @@
     <!-- HERO -->
     <section class="hero" id="topo">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-text">
           <span class="eyebrow">Mentoria Individual · 3 Meses</span>
           <h1>
             Todo ambiente tem uma <em>memória</em>. Aprenda a lê-la, tratá-la e
@@ -1011,7 +1018,7 @@
           </h1>
           <p class="lead">
             Uma mentoria prática e individual para terapeutas e estudantes de
-            espiritualidade que já conhecem a apometria de ambientes, mas ainda
+            espiritualidade que já conhecem a apometria de ambientes — mas ainda
             travam na hora de atuar com segurança, ética e profundidade.
           </p>
           <div class="hero-actions">
@@ -1020,6 +1027,10 @@
             >
             <a href="#programa" class="btn-ghost">Ver o programa completo</a>
           </div>
+        </div>
+
+        <div class="hero-photo reveal">
+          <img src="/fotos/flavio.jpg" alt="Flávio Rodrigues" />
         </div>
       </div>
     </section>
@@ -1115,14 +1126,6 @@
             <div>
               <span class="num">100+</span>
               <span class="lbl">Atendimentos em 4 meses</span>
-            </div>
-            <div>
-              <span class="num">6</span>
-              <span class="lbl">Encontros quinzenais</span>
-            </div>
-            <div>
-              <span class="num">1:1</span>
-              <span class="lbl">Mentoria individual</span>
             </div>
           </div>
         </div>
@@ -1246,18 +1249,16 @@
             <p>6 encontros quinzenais com Flávio</p>
           </div>
           <div class="detail-card">
-            <div class="icon">✦</div>
-            <h4>Prova social</h4>
-            <p>Mais de 100 atendimentos em 4 meses</p>
+            <div class="icon">🎁</div>
+            <h4>Bônus incluso</h4>
+            <p>Curso gravado completo*</p>
           </div>
         </div>
 
         <div class="bonus-box reveal">
-          <div class="bonus-icon">🎁</div>
           <div>
-            <h4>Bônus incluso: Curso gravado completo</h4>
             <p>
-              Toda a metodologia em vídeo-aulas, disponível na plataforma
+              *Toda a metodologia em vídeo-aulas, disponível na plataforma
               Kiwify, para você rever quantas vezes precisar durante e depois da
               mentoria.
             </p>
